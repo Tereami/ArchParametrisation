@@ -16,34 +16,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 #endregion
 
 namespace ArchParametrisation
 {
-    public class RoomInfo
+    public class FlatInfo
     {
-        public string Name;
-        public double Coeff;
-        public bool IsLiving;
-        public int RoomElemId;
+        public int RoomsCount = 0;
+        public double FullArea = 0;
+        public double LivingArea = 0;
+        public double AreaWithCoeff = 0;
 
-        public RoomInfo()
-        {
-            //пустой конструктор для сериализатора
-        }
-
-        public RoomInfo(Autodesk.Revit.DB.Architecture.Room room)
-        {
-            Coeff = 1;
-            IsLiving = false;
-            RoomElemId = room.Id.IntegerValue;
-        }
-
-        public RoomInfo(string name, double coeff, bool isLive)
-        {
-            Name = name;
-            Coeff = coeff;
-            IsLiving = isLive;
-        }
+        public List<Room> rooms = new List<Room>();
     }
 }
