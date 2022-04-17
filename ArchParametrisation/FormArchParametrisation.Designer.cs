@@ -48,13 +48,11 @@ namespace ArchParametrisation
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkboxActivateRoomFinishing = new System.Windows.Forms.CheckBox();
+            this.chkboxRoomFinishingSequenceNumbers = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtbxCeilingNumbers = new System.Windows.Forms.TextBox();
             this.txtbxWallNumbers = new System.Windows.Forms.TextBox();
-            this.txtbxRoomNumberParam = new System.Windows.Forms.TextBox();
+            this.txtbxFinishingRoomNumberParam = new System.Windows.Forms.TextBox();
             this.txtbxFloorNumbers = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,18 +75,25 @@ namespace ArchParametrisation
             this.txtbxFlatLivingArea = new System.Windows.Forms.TextBox();
             this.txtbxFlatSumArea = new System.Windows.Forms.TextBox();
             this.txtbxFlatArea = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chxbxRoomNumberToFinishing = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chkbxFloorsIncludeInFinishing = new System.Windows.Forms.CheckBox();
+            this.txtbxIsLivingParam = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(378, 884);
+            this.buttonCancel.Location = new System.Drawing.Point(378, 923);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 0;
@@ -99,7 +104,7 @@ namespace ArchParametrisation
             // buttonOk
             // 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOk.Location = new System.Drawing.Point(297, 884);
+            this.buttonOk.Location = new System.Drawing.Point(297, 923);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 0;
@@ -237,7 +242,7 @@ namespace ArchParametrisation
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(6, 91);
+            this.label4.Location = new System.Drawing.Point(3, 91);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(429, 35);
@@ -277,102 +282,80 @@ namespace ArchParametrisation
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.chkboxActivateRoomFinishing);
+            this.groupBox3.Controls.Add(this.chkbxFloorsIncludeInFinishing);
+            this.groupBox3.Controls.Add(this.chkboxRoomFinishingSequenceNumbers);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.txtbxCeilingNumbers);
             this.groupBox3.Controls.Add(this.txtbxWallNumbers);
-            this.groupBox3.Controls.Add(this.txtbxRoomNumberParam);
             this.groupBox3.Controls.Add(this.txtbxFloorNumbers);
-            this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(12, 245);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 181);
+            this.groupBox3.Size = new System.Drawing.Size(441, 148);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ведомость отделки";
+            this.groupBox3.Text = "Номера помещений по типу отделки";
             // 
-            // chkboxActivateRoomFinishing
+            // chkboxRoomFinishingSequenceNumbers
             // 
-            this.chkboxActivateRoomFinishing.AutoSize = true;
-            this.chkboxActivateRoomFinishing.Checked = true;
-            this.chkboxActivateRoomFinishing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkboxActivateRoomFinishing.Location = new System.Drawing.Point(6, 19);
-            this.chkboxActivateRoomFinishing.Name = "chkboxActivateRoomFinishing";
-            this.chkboxActivateRoomFinishing.Size = new System.Drawing.Size(97, 17);
-            this.chkboxActivateRoomFinishing.TabIndex = 4;
-            this.chkboxActivateRoomFinishing.Text = "Активировать";
-            this.chkboxActivateRoomFinishing.UseVisualStyleBackColor = true;
-            this.chkboxActivateRoomFinishing.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            this.chkboxRoomFinishingSequenceNumbers.AutoSize = true;
+            this.chkboxRoomFinishingSequenceNumbers.Checked = true;
+            this.chkboxRoomFinishingSequenceNumbers.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkboxRoomFinishingSequenceNumbers.Location = new System.Drawing.Point(6, 19);
+            this.chkboxRoomFinishingSequenceNumbers.Name = "chkboxRoomFinishingSequenceNumbers";
+            this.chkboxRoomFinishingSequenceNumbers.Size = new System.Drawing.Size(97, 17);
+            this.chkboxRoomFinishingSequenceNumbers.TabIndex = 4;
+            this.chkboxRoomFinishingSequenceNumbers.Text = "Активировать";
+            this.chkboxRoomFinishingSequenceNumbers.UseVisualStyleBackColor = true;
+            this.chkboxRoomFinishingSequenceNumbers.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(3, 143);
+            this.label8.Location = new System.Drawing.Point(3, 110);
             this.label8.Margin = new System.Windows.Forms.Padding(3);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(426, 35);
             this.label8.TabIndex = 2;
-            this.label8.Text = "В элементы отделки будет прописан номер помещения, а в каждое помещение - номера " +
-    "помещений, имеющих тот же тип отделки.";
-            // 
-            // txtbxCeilingNumbers
-            // 
-            this.txtbxCeilingNumbers.Location = new System.Drawing.Point(227, 117);
-            this.txtbxCeilingNumbers.Name = "txtbxCeilingNumbers";
-            this.txtbxCeilingNumbers.Size = new System.Drawing.Size(208, 20);
-            this.txtbxCeilingNumbers.TabIndex = 3;
-            this.txtbxCeilingNumbers.Text = "АР_НомераПоТипуПотолка";
+            this.label8.Text = "В каждое помещение будут прописаны номера помещений, имеющих тот же тип отделки.";
             // 
             // txtbxWallNumbers
             // 
-            this.txtbxWallNumbers.Location = new System.Drawing.Point(227, 91);
+            this.txtbxWallNumbers.Location = new System.Drawing.Point(227, 65);
             this.txtbxWallNumbers.Name = "txtbxWallNumbers";
             this.txtbxWallNumbers.Size = new System.Drawing.Size(208, 20);
             this.txtbxWallNumbers.TabIndex = 3;
             this.txtbxWallNumbers.Text = "АР_НомераПоТипуСтен";
             // 
-            // txtbxRoomNumberParam
+            // txtbxFinishingRoomNumberParam
             // 
-            this.txtbxRoomNumberParam.Location = new System.Drawing.Point(227, 39);
-            this.txtbxRoomNumberParam.Name = "txtbxRoomNumberParam";
-            this.txtbxRoomNumberParam.Size = new System.Drawing.Size(208, 20);
-            this.txtbxRoomNumberParam.TabIndex = 3;
-            this.txtbxRoomNumberParam.Text = "АР_НомерПомещения";
+            this.txtbxFinishingRoomNumberParam.Location = new System.Drawing.Point(227, 39);
+            this.txtbxFinishingRoomNumberParam.Name = "txtbxFinishingRoomNumberParam";
+            this.txtbxFinishingRoomNumberParam.Size = new System.Drawing.Size(208, 20);
+            this.txtbxFinishingRoomNumberParam.TabIndex = 3;
+            this.txtbxFinishingRoomNumberParam.Text = "АР_НомерПомещения";
             // 
             // txtbxFloorNumbers
             // 
-            this.txtbxFloorNumbers.Location = new System.Drawing.Point(227, 65);
+            this.txtbxFloorNumbers.Location = new System.Drawing.Point(227, 39);
             this.txtbxFloorNumbers.Name = "txtbxFloorNumbers";
             this.txtbxFloorNumbers.Size = new System.Drawing.Size(208, 20);
             this.txtbxFloorNumbers.TabIndex = 3;
             this.txtbxFloorNumbers.Text = "АР_НомераПоТипуПола";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 120);
-            this.label12.Margin = new System.Windows.Forms.Padding(3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(214, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Перечисление номеров по типу потолка:";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 94);
+            this.label11.Location = new System.Drawing.Point(3, 68);
             this.label11.Margin = new System.Windows.Forms.Padding(3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(196, 13);
+            this.label11.Size = new System.Drawing.Size(214, 13);
             this.label11.TabIndex = 2;
-            this.label11.Text = "Перечисление номеров по типу стен:";
+            this.label11.Text = "Перечисление номеров по типу отделки:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 42);
+            this.label19.Location = new System.Drawing.Point(6, 42);
             this.label19.Margin = new System.Windows.Forms.Padding(3);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(164, 13);
@@ -382,7 +365,7 @@ namespace ArchParametrisation
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 68);
+            this.label10.Location = new System.Drawing.Point(3, 42);
             this.label10.Margin = new System.Windows.Forms.Padding(3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(197, 13);
@@ -409,24 +392,28 @@ namespace ArchParametrisation
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.chkbxActivateFlatography);
             this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.txtbxIsLivingParam);
             this.groupBox4.Controls.Add(this.txtbxAreaCoeff);
             this.groupBox4.Controls.Add(this.txtbxRoomCount);
             this.groupBox4.Controls.Add(this.txtbxFlatLivingArea);
             this.groupBox4.Controls.Add(this.txtbxFlatSumArea);
             this.groupBox4.Controls.Add(this.txtbxFlatArea);
             this.groupBox4.Controls.Add(this.txtbxFlatNumber);
-            this.groupBox4.Location = new System.Drawing.Point(12, 432);
+            this.groupBox4.Location = new System.Drawing.Point(12, 506);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(441, 445);
+            this.groupBox4.Size = new System.Drawing.Size(441, 411);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Квартирография";
@@ -435,15 +422,17 @@ namespace ArchParametrisation
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RommName,
             this.RoomCoeff,
             this.RoomIsLiving});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 217);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 243);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 222);
+            this.dataGridView1.Size = new System.Drawing.Size(429, 162);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.EnabledChanged += new System.EventHandler(this.dataGridView1_EnabledChanged);
             // 
@@ -484,7 +473,7 @@ namespace ArchParametrisation
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 198);
+            this.label18.Location = new System.Drawing.Point(3, 224);
             this.label18.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(113, 13);
@@ -581,13 +570,78 @@ namespace ArchParametrisation
             this.txtbxFlatArea.TabIndex = 3;
             this.txtbxFlatArea.Text = "АР_ПлощадьКвартиры";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chxbxRoomNumberToFinishing);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.txtbxFinishingRoomNumberParam);
+            this.groupBox5.Location = new System.Drawing.Point(12, 396);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(441, 104);
+            this.groupBox5.TabIndex = 5;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Принадлежность 3D-отделки к помещениям";
+            // 
+            // chxbxRoomNumberToFinishing
+            // 
+            this.chxbxRoomNumberToFinishing.AutoSize = true;
+            this.chxbxRoomNumberToFinishing.Checked = true;
+            this.chxbxRoomNumberToFinishing.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chxbxRoomNumberToFinishing.Location = new System.Drawing.Point(6, 19);
+            this.chxbxRoomNumberToFinishing.Name = "chxbxRoomNumberToFinishing";
+            this.chxbxRoomNumberToFinishing.Size = new System.Drawing.Size(97, 17);
+            this.chxbxRoomNumberToFinishing.TabIndex = 4;
+            this.chxbxRoomNumberToFinishing.Text = "Активировать";
+            this.chxbxRoomNumberToFinishing.UseVisualStyleBackColor = true;
+            this.chxbxRoomNumberToFinishing.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            // 
+            // label20
+            // 
+            this.label20.Location = new System.Drawing.Point(3, 65);
+            this.label20.Margin = new System.Windows.Forms.Padding(3);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(426, 35);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "В отделку, выполненную \"Стенами\", будет прописан номер помещения, которое они окр" +
+    "ужают.";
+            // 
+            // chkbxFloorsIncludeInFinishing
+            // 
+            this.chkbxFloorsIncludeInFinishing.AutoSize = true;
+            this.chkbxFloorsIncludeInFinishing.Location = new System.Drawing.Point(43, 87);
+            this.chkbxFloorsIncludeInFinishing.Name = "chkbxFloorsIncludeInFinishing";
+            this.chkbxFloorsIncludeInFinishing.Size = new System.Drawing.Size(163, 17);
+            this.chkbxFloorsIncludeInFinishing.TabIndex = 5;
+            this.chkbxFloorsIncludeInFinishing.Text = "Учитывать полы в отделке";
+            this.chkbxFloorsIncludeInFinishing.UseVisualStyleBackColor = true;
+            // 
+            // txtbxIsLivingParam
+            // 
+            this.txtbxIsLivingParam.Location = new System.Drawing.Point(227, 195);
+            this.txtbxIsLivingParam.Name = "txtbxIsLivingParam";
+            this.txtbxIsLivingParam.Size = new System.Drawing.Size(208, 20);
+            this.txtbxIsLivingParam.TabIndex = 3;
+            this.txtbxIsLivingParam.Text = "Помещение жилое";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 198);
+            this.label12.Margin = new System.Windows.Forms.Padding(3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(144, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Метка жилого помещения:";
+            // 
             // FormArchParametrisation
             // 
             this.AcceptButton = this.buttonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(465, 919);
+            this.ClientSize = new System.Drawing.Size(465, 958);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -607,6 +661,8 @@ namespace ArchParametrisation
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -633,12 +689,10 @@ namespace ArchParametrisation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkboxActivateRoomFinishing;
-        private System.Windows.Forms.TextBox txtbxCeilingNumbers;
+        private System.Windows.Forms.CheckBox chkboxRoomFinishingSequenceNumbers;
         private System.Windows.Forms.TextBox txtbxWallNumbers;
         private System.Windows.Forms.TextBox txtbxFloorNumbers;
         private System.Windows.Forms.TextBox txtbxFlatNumber;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -656,10 +710,16 @@ namespace ArchParametrisation
         private System.Windows.Forms.TextBox txtbxFlatLivingArea;
         private System.Windows.Forms.TextBox txtbxFlatSumArea;
         private System.Windows.Forms.TextBox txtbxFlatArea;
-        private System.Windows.Forms.TextBox txtbxRoomNumberParam;
+        private System.Windows.Forms.TextBox txtbxFinishingRoomNumberParam;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridViewTextBoxColumn RommName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomCoeff;
         private System.Windows.Forms.DataGridViewCheckBoxColumn RoomIsLiving;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox chxbxRoomNumberToFinishing;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox chkbxFloorsIncludeInFinishing;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtbxIsLivingParam;
     }
 }

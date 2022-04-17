@@ -58,8 +58,22 @@ namespace ArchParametrisation
             foreach (FamilyInstance fi in openings)
             {
                 List<Room> curRooms = new List<Room>();
-                curRooms.Add(fi.Room);
-                curRooms.Add(fi.FromRoom);
+                Room room1 = fi.Room;
+                Room room2 = fi.FromRoom;
+
+                if (room1 != null && room2 != null)
+                {
+                    if (room1.Id.IntegerValue == room2.Id.IntegerValue)
+                    {
+                        string msg = "Неверная принадлежность к помещениям у элемента id" + fi.Id.IntegerValue.ToString();
+                        TaskDialog.Show("Error", msg);
+                        throw new Exception(msg);
+                    }
+                }
+
+                curRooms.Add(room1);
+                curRooms.Add(room2);
+
                 foreach (Room r in curRooms)
                 {
                     if (r == null) continue;
@@ -100,15 +114,52 @@ namespace ArchParametrisation
             return param;
         }
 
-        public static void SetStringParameterValue(this Element elem, string paramName, string value)
+        public static void SetValue<T>(this Element elem, string paramName, T value)
         {
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
-                throw new Exception("Нет параметра " + paramName + " в элементе " + elem.Id.IntegerValue.ToString());
+                throw new Exception("Нет параметра " + paramName
+                    + " в элементе " + elem.Id.IntegerValue);
             if (p.IsReadOnly)
-                throw new Exception("Параметр недоступен: " + paramName + " в элементе " + elem.Id.IntegerValue.ToString());
-            p.Set(value);
+                throw new Exception("Параметр недоступен: " + paramName
+                    + " в элементе " + elem.Id.IntegerValue);
+
+            if (value is string stringvalue)
+                p.Set(stringvalue);
+            else if (value is double doubleVal)
+                p.Set(doubleVal);
+            else if (value is int intvalue)
+                p.Set(intvalue);
+            else if (value is ElementId idValue)
+                p.Set(idValue);
+            else
+                throw new Exception("Неизвестный тип параметра " + paramName);
         }
+
+        public static T GetValue<T>(this Element elem, string paramName)
+        {
+            Parameter p = elem.LookupParameter(paramName);
+            if (p == null)
+                throw new Exception("Нет параметра " + paramName
+                    + " в элементе " + elem.Id.IntegerValue);
+            if(!p.HasValue)
+                return default(T);
+
+            switch (p.StorageType)
+            {
+                case StorageType.Integer:
+                    return (T)(object)p.AsInteger();
+                case StorageType.Double:
+                    return (T)(object)p.AsDouble();
+                case StorageType.String:
+                    return (T)(object)p.AsString();
+                case StorageType.ElementId:
+                    return (T)(object)p.AsElementId();
+            }
+            throw new Exception("Неизвестный тип параметра " + paramName);
+        }
+
+
 
         public static List<Element> GetBoundaryRoomsElements(this Room r)
         {

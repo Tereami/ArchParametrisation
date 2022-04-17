@@ -35,13 +35,15 @@ namespace ArchParametrisation
         public bool enableOpeningsArea = false;
         public string openingsWidthParamName = "Ширина";
         public string openingsHeightParamName = "Высота";
-        public string openingsAreaParamName = "АР_ПлощадьПроемов";
+        public string openingsAreaParamName = "АР_ПлощПроемов";
 
         public bool enableNumbersOfFinishings = false;
-        public string roomNumberParamName = "АР_НомерПомещения";
         public string numbersOfFloorTypesParamName = "АР_НомераПомещенийПоТипуПола";
-        public string numbersOfWallsParamName = "АР_НомераПомещенийВедОтделки";
-        public string numbersOfCeilingTypesParamName = "АР_НомераПомещенийПоТипуПотолка";
+        public string numbersOfFinishingParamName = "АР_НомераПомещенийВедОтделки";
+        public bool chkbxFloorsIncludeInFinishing = false;
+
+        public bool enableRoomNumberToFinishing = false;
+        public string roomNumberParamName = "АР_НомерПомещения";
 
         public bool enableFlatography = false;
         public string flatNumberParamName = "АР_НомерКвартиры";
@@ -50,6 +52,7 @@ namespace ArchParametrisation
         public string flatLivingAreaParamName = "АР_ПлощКвЖилая";
         public string flatRoomsCountParamName = "АР_КолвоКомнат";
         public string flatRoomAreaCoeffParamName = "АР_КоэффПлощади";
+        public string isLivingParamName = "Помещение жилое";
 
         public List<RoomInfo> defaultRoomInfos = new List<RoomInfo>
         {

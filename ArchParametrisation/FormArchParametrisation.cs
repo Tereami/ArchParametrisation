@@ -43,11 +43,13 @@ namespace ArchParametrisation
             txtbxOpeningHeightParam.Text = s.openingsHeightParamName;
             txtbxOpeningsAreaParam.Text = s.openingsAreaParamName;
 
-            chkboxActivateRoomFinishing.Checked = s.enableNumbersOfFinishings;
-            txtbxRoomNumberParam.Text = s.roomNumberParamName;
+            chkboxRoomFinishingSequenceNumbers.Checked = s.enableNumbersOfFinishings;
             txtbxFloorNumbers.Text = s.numbersOfFloorTypesParamName;
-            txtbxWallNumbers.Text = s.numbersOfWallsParamName;
-            txtbxCeilingNumbers.Text = s.numbersOfCeilingTypesParamName;
+            txtbxWallNumbers.Text = s.numbersOfFinishingParamName;
+            chkbxFloorsIncludeInFinishing.Checked = s.chkbxFloorsIncludeInFinishing;
+
+            chxbxRoomNumberToFinishing.Checked = s.enableRoomNumberToFinishing;
+            txtbxFinishingRoomNumberParam.Text = s.roomNumberParamName;
 
             chkbxActivateFlatography.Checked = s.enableFlatography;
             txtbxFlatNumber.Text = s.flatNumberParamName;
@@ -56,6 +58,7 @@ namespace ArchParametrisation
             txtbxFlatLivingArea.Text = s.flatLivingAreaParamName;
             txtbxRoomCount.Text = s.flatRoomsCountParamName;
             txtbxAreaCoeff.Text = s.flatRoomAreaCoeffParamName;
+            txtbxIsLivingParam.Text = s.isLivingParamName;
 
             foreach (RoomInfo ri in s.RoomInfos)
             {
@@ -78,8 +81,10 @@ namespace ArchParametrisation
         {
             bool someCheckboxesOn = chkbxActivateMirrored.Checked
                 || chkbxActivateOpeningsArea.Checked
-                || chkboxActivateRoomFinishing.Checked
+                || chkboxRoomFinishingSequenceNumbers.Checked
+                || chxbxRoomNumberToFinishing.Checked
                 || chkbxActivateFlatography.Checked;
+                        
 
             if (!someCheckboxesOn)
             {
@@ -117,11 +122,13 @@ namespace ArchParametrisation
             curSettings.openingsHeightParamName = txtbxOpeningHeightParam.Text;
             curSettings.openingsAreaParamName = txtbxOpeningsAreaParam.Text;
 
-            curSettings.enableNumbersOfFinishings = chkboxActivateRoomFinishing.Checked;
-            curSettings.roomNumberParamName = txtbxRoomNumberParam.Text;
+            curSettings.enableNumbersOfFinishings = chkboxRoomFinishingSequenceNumbers.Checked;
             curSettings.numbersOfFloorTypesParamName = txtbxFloorNumbers.Text;
-            curSettings.numbersOfWallsParamName = txtbxWallNumbers.Text;
-            curSettings.numbersOfCeilingTypesParamName = txtbxCeilingNumbers.Text;
+            curSettings.numbersOfFinishingParamName = txtbxWallNumbers.Text;
+            curSettings.chkbxFloorsIncludeInFinishing = chkbxFloorsIncludeInFinishing.Checked;
+
+            curSettings.enableRoomNumberToFinishing = chxbxRoomNumberToFinishing.Checked;
+            curSettings.roomNumberParamName = txtbxFinishingRoomNumberParam.Text;
 
             curSettings.enableFlatography = chkbxActivateFlatography.Checked;
             curSettings.flatNumberParamName = txtbxFlatNumber.Text;
@@ -130,7 +137,7 @@ namespace ArchParametrisation
             curSettings.flatLivingAreaParamName = txtbxFlatLivingArea.Text;
             curSettings.flatRoomsCountParamName = txtbxRoomCount.Text;
             curSettings.flatRoomAreaCoeffParamName = txtbxAreaCoeff.Text;
-
+            curSettings.isLivingParamName = txtbxIsLivingParam.Text;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

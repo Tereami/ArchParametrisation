@@ -79,7 +79,6 @@ namespace ArchParametrisation
             }
 
             sets = form.curSettings;
-
             List<string> messages = new List<string>();
 
             int mirroredCount = 0;
@@ -91,13 +90,13 @@ namespace ArchParametrisation
                     List<FamilyInstance> mirroredElems = doc.GetMirroredElements();
                     foreach (FamilyInstance e in mirroredElems)
                     {
-                        e.SetStringParameterValue(sets.mirroredParamName, sets.mirroredText);
+                        e.SetValue(sets.mirroredParamName, sets.mirroredText);
                         mirroredCount++;
                     }
                     t.Commit();
                 }
 
-                messages.Add("Найдено отзеркаленных элементов: " + mirroredCount.ToString());
+                messages.Add("Найдено отзеркаленных элементов: " + mirroredCount);
             }
 
             int openingsCount = 0;
@@ -111,9 +110,6 @@ namespace ArchParametrisation
                     foreach (Room r in rooms)
                     {
                         int roomId = r.Id.IntegerValue;
-
-
-
                         double sumOpeningsArea = 0;
                         if (roomIdsAndOpenings.ContainsKey(roomId))
                         {
@@ -128,25 +124,77 @@ namespace ArchParametrisation
                             }
                         }
 
-                        Parameter openingAreaParam = r.LookupParameter(sets.openingsAreaParamName);
-                        if (openingAreaParam == null)
-                        {
-                            message = "В помещениях нет параметра " + sets.openingsAreaParamName;
-                            return Result.Failed;
-                        }
-                        openingAreaParam.Set(sumOpeningsArea);
+                        r.SetValue(sets.openingsAreaParamName, sumOpeningsArea);
                     }
                     t.Commit();
                 }
-                messages.Add("Найдено проёмов: " + openingsCount.ToString());
+                messages.Add("Найдено проёмов: " + openingsCount);
             }
 
-            int wallCount = 0;
+            int roomsCount = 0;
             if (sets.enableNumbersOfFinishings)
             {
                 using (Transaction t = new Transaction(doc))
                 {
                     t.Start("Ведомость отделки");
+
+                    Dictionary<string, HashSet<string>> floorTypesAndRoomNumbers = new Dictionary<string, HashSet<string>>();
+                    Dictionary<string, HashSet<string>> finishesTypesAndRoomNumbers = new Dictionary<string, HashSet<string>>();
+
+                    Dictionary<int, string> roomIdsAndFloorNames = new Dictionary<int, string>();
+                    Dictionary<int, string> roomIdsAndFinishingNames = new Dictionary<int, string>();
+
+                    List<BuiltInParameter> floorParameters = new List<BuiltInParameter> {
+                        BuiltInParameter.ROOM_FINISH_FLOOR
+                    };
+                    List<BuiltInParameter> finishingParameters = new List<BuiltInParameter>
+                    {
+                        BuiltInParameter.ROOM_FINISH_WALL,
+                        BuiltInParameter.ROOM_FINISH_CEILING
+                    };
+                    if (sets.chkbxFloorsIncludeInFinishing)
+                        finishingParameters.Add(BuiltInParameter.ROOM_FINISH_FLOOR);
+
+                    foreach (Room r in rooms)
+                    {
+                        int roomId = r.Id.IntegerValue;
+                        string roomNumber = r.Number;
+
+                        string floorTypeName = GetFinishingName(r, floorParameters);
+                        CollectFinishingTypes(roomNumber, floorTypeName, ref floorTypesAndRoomNumbers);
+                        roomIdsAndFloorNames.Add(roomId, floorTypeName);
+
+                        string finishingTypeName = GetFinishingName(r, finishingParameters);
+                        CollectFinishingTypes(roomNumber, finishingTypeName, ref finishesTypesAndRoomNumbers);
+                        roomIdsAndFinishingNames.Add(roomId, finishingTypeName);
+                    }
+
+                    foreach (Room r in rooms)
+                    {
+                        int roomId = r.Id.IntegerValue;
+
+                        string floorTypeName = roomIdsAndFloorNames[roomId];
+                        HashSet<string> floorTypeNumbers = floorTypesAndRoomNumbers[floorTypeName];
+                        WriteFinishSequence(r, sets.numbersOfFloorTypesParamName, ", ", floorTypeNumbers);
+
+                        string finishingTypename = roomIdsAndFinishingNames[roomId];
+                        HashSet<string> finishingTypeNumners = finishesTypesAndRoomNumbers[finishingTypename];
+                        WriteFinishSequence(r, sets.numbersOfFinishingParamName, ", ", finishingTypeNumners);
+
+                        roomsCount++;
+                    }
+
+                    t.Commit();
+                }
+                messages.Add("Номера по типам отделки прописаны для: " + openingsCount + " помещений");
+            }
+
+            int wallCount = 0;
+            if (sets.enableRoomNumberToFinishing)
+            {
+                using (Transaction t = new Transaction(doc))
+                {
+                    t.Start("Номера помещений в отделку");
 
                     foreach (Room r in rooms)
                     {
@@ -154,20 +202,20 @@ namespace ArchParametrisation
                         List<Element> walls = r.GetBoundaryRoomsElements();
                         foreach (Element e in walls)
                         {
-                            e.SetStringParameterValue(sets.roomNumberParamName, roomNumber);
+                            e.SetValue(sets.roomNumberParamName, roomNumber);
                             wallCount++;
                         }
                     }
 
                     t.Commit();
                 }
-                messages.Add("Обработано элементов отделки: " + openingsCount.ToString());
+                messages.Add("Номера помещений прописаны для " + wallCount + " стен");
             }
 
             int flatsCount = 0;
             if (sets.enableFlatography)
             {
-                List<string> livingRooms = sets.RoomInfos.Where(i => i.IsLiving).Select(i => i.Name).ToList();
+                List<string> livingRoomNames = sets.RoomInfos.Where(i => i.IsLiving).Select(i => i.Name).ToList();
                 Dictionary<string, double> roomCoefs = new Dictionary<string, double>();
                 foreach (RoomInfo ri in sets.RoomInfos)
                 {
@@ -177,17 +225,20 @@ namespace ArchParametrisation
                 Dictionary<string, FlatInfo> flats = new Dictionary<string, FlatInfo>();
                 foreach (Room room in rooms)
                 {
-                    string flatNumber = room.LookupParameter(sets.flatNumberParamName).AsString();
+                    string flatNumber = room.GetValue<string>(sets.flatNumberParamName);
+                    if (flatNumber == null)
+                        continue;
+
                     double roomArea = room.get_Parameter(BuiltInParameter.ROOM_AREA).AsDouble();
                     string roomName = room.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
 
                     bool isLiving = false;
-                    if (livingRooms.Contains(roomName))
+                    if (livingRoomNames.Contains(roomName))
+                    {
                         isLiving = true;
+                    }
 
-                    double coeff = 1;
-                    if (flats.ContainsKey(roomName))
-                        coeff = roomCoefs[roomName];
+                    double coeff = roomCoefs[roomName];
                     double areaWithCoeff = roomArea * coeff;
 
                     FlatInfo curFlat = null;
@@ -196,6 +247,7 @@ namespace ArchParametrisation
                     else
                         curFlat = new FlatInfo();
 
+                    curFlat.rooms.Add(room);
                     curFlat.FullArea += roomArea;
                     curFlat.AreaWithCoeff += areaWithCoeff;
                     if (isLiving)
@@ -215,16 +267,23 @@ namespace ArchParametrisation
                     foreach (KeyValuePair<string, FlatInfo> kvp in flats)
                     {
                         FlatInfo flat = kvp.Value;
-                        foreach (Room r in flat.rooms)
+                        foreach (Room curRoom in flat.rooms)
                         {
-                            string roomName = r.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
+                            string roomName = curRoom.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
                             double coeff = roomCoefs[roomName];
-                            r.LookupParameter(sets.flatRoomAreaCoeffParamName).Set(coeff);
-                            r.LookupParameter(sets.flatRoomsCountParamName).Set(flat.RoomsCount);
-                            r.LookupParameter(sets.flatSumAreaParamName).Set(flat.FullArea);
-                            r.LookupParameter(sets.flatLivingAreaParamName).Set(flat.LivingArea);
-                            r.LookupParameter(sets.flatAreaParamName).Set(flat.AreaWithCoeff);
+                            curRoom.SetValue(sets.flatRoomAreaCoeffParamName, coeff);
+                            curRoom.SetValue(sets.flatRoomsCountParamName, flat.RoomsCount);
+                            curRoom.SetValue(sets.flatSumAreaParamName, flat.FullArea);
+                            curRoom.SetValue(sets.flatLivingAreaParamName, flat.LivingArea);
+                            curRoom.SetValue(sets.flatAreaParamName, flat.AreaWithCoeff);
+
+                            int isLiving = 0;
+                            if (livingRoomNames.Contains(roomName))
+                                isLiving = 1;
+                            curRoom.SetValue(sets.isLivingParamName, isLiving);
+
                         }
+
                         flatsCount++;
                     }
 
@@ -239,6 +298,55 @@ namespace ArchParametrisation
 
             BalloonTip.Show("АР параметризация выполнена!", msg);
             return Result.Succeeded;
+        }
+
+        private void CollectFinishingTypes(string roomNumber, string finishingTypeName, ref Dictionary<string, HashSet<string>> data)
+        {
+            if (string.IsNullOrEmpty(finishingTypeName))
+                return;
+
+            if (data.ContainsKey(finishingTypeName))
+            {
+                data[finishingTypeName].Add(roomNumber);
+            }
+            else
+            {
+                HashSet<string> roomNumbers = new HashSet<string> { roomNumber };
+                data.Add(finishingTypeName, roomNumbers);
+            }
+        }
+
+        private void WriteFinishSequence(Room r, string roomNumbersParamName, string separator, HashSet<string> curTypeRoomNumbers)
+        {
+            List<string> numbers = curTypeRoomNumbers.ToList();
+            numbers.Sort();
+
+            string numbersJoined = string.Join(separator, numbers);
+
+            r.SetValue(roomNumbersParamName, numbersJoined);
+        }
+
+        private string GetFinishingName(Room r, List<BuiltInParameter> parameters)
+        {
+            List<string> finishNames = new List<string>();
+
+            foreach (BuiltInParameter param in parameters)
+            {
+                Parameter finishParam = r.get_Parameter(param);
+                if (finishParam == null || !finishParam.HasValue)
+                    continue;
+
+                string finishTypeName = finishParam.AsString();
+                if (string.IsNullOrEmpty(finishTypeName))
+                    continue;
+                finishNames.Add(finishTypeName);
+            }
+
+            if (finishNames.Count == 0)
+                return "-";
+
+            string joinedFinishTypeName = string.Join("_", finishNames);
+            return joinedFinishTypeName;
         }
     }
 }
