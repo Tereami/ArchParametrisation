@@ -47,6 +47,7 @@ namespace ArchParametrisation
             txtbxFloorNumbers.Text = s.numbersOfFloorTypesParamName;
             txtbxWallNumbers.Text = s.numbersOfFinishingParamName;
             chkbxFloorsIncludeInFinishing.Checked = s.chkbxFloorsIncludeInFinishing;
+            checkBoxUseRoomNames.Checked = s.useRoomName;
 
             chxbxRoomNumberToFinishing.Checked = s.enableRoomNumberToFinishing;
             txtbxFinishingRoomNumberParam.Text = s.roomNumberParamName;
@@ -72,7 +73,7 @@ namespace ArchParametrisation
             GroupBox grbx = curChkBox.Parent as GroupBox;
             foreach (Control child in grbx.Controls)
             {
-                if (child is CheckBox) continue;
+                if (child == curChkBox) continue;
                 child.Enabled = curChkBox.Checked;
             }
         }
@@ -126,6 +127,7 @@ namespace ArchParametrisation
             curSettings.numbersOfFloorTypesParamName = txtbxFloorNumbers.Text;
             curSettings.numbersOfFinishingParamName = txtbxWallNumbers.Text;
             curSettings.chkbxFloorsIncludeInFinishing = chkbxFloorsIncludeInFinishing.Checked;
+            curSettings.useRoomName = checkBoxUseRoomNames.Checked;
 
             curSettings.enableRoomNumberToFinishing = chxbxRoomNumberToFinishing.Checked;
             curSettings.roomNumberParamName = txtbxFinishingRoomNumberParam.Text;

@@ -90,7 +90,7 @@ namespace ArchParametrisation
                     List<FamilyInstance> mirroredElems = doc.GetMirroredElements();
                     foreach (FamilyInstance e in mirroredElems)
                     {
-                        e.SetValue(sets.mirroredParamName, sets.mirroredText);
+                        e.SetValue(sets.mirroredParamName, sets.mirroredText, false);
                         mirroredCount++;
                     }
                     t.Commit();
@@ -124,7 +124,7 @@ namespace ArchParametrisation
                             }
                         }
 
-                        r.SetValue(sets.openingsAreaParamName, sumOpeningsArea);
+                        r.SetValue(sets.openingsAreaParamName, sumOpeningsArea, true);
                     }
                     t.Commit();
                 }
@@ -158,7 +158,7 @@ namespace ArchParametrisation
                     foreach (Room r in rooms)
                     {
                         int roomId = r.Id.IntegerValue;
-                        string roomNumber = r.Number;
+                        string roomNumber = GetRoomNumber(r, sets);
 
                         string floorTypeName = GetFinishingName(r, floorParameters);
                         CollectFinishingTypes(roomNumber, floorTypeName, ref floorTypesAndRoomNumbers);
@@ -186,7 +186,7 @@ namespace ArchParametrisation
 
                     t.Commit();
                 }
-                messages.Add("Номера по типам отделки прописаны для: " + openingsCount + " помещений");
+                messages.Add("Номера по типам отделки прописаны для: " + roomsCount + " помещений");
             }
 
             int wallCount = 0;
@@ -198,11 +198,11 @@ namespace ArchParametrisation
 
                     foreach (Room r in rooms)
                     {
-                        string roomNumber = r.Number;
+                        string roomNumber = GetRoomNumber(r, sets);
                         List<Element> walls = r.GetBoundaryRoomsElements();
                         foreach (Element e in walls)
                         {
-                            e.SetValue(sets.roomNumberParamName, roomNumber);
+                            e.SetValue(sets.roomNumberParamName, roomNumber, false);
                             wallCount++;
                         }
                     }
@@ -271,16 +271,16 @@ namespace ArchParametrisation
                         {
                             string roomName = curRoom.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
                             double coeff = roomCoefs[roomName];
-                            curRoom.SetValue(sets.flatRoomAreaCoeffParamName, coeff);
-                            curRoom.SetValue(sets.flatRoomsCountParamName, flat.RoomsCount);
-                            curRoom.SetValue(sets.flatSumAreaParamName, flat.FullArea);
-                            curRoom.SetValue(sets.flatLivingAreaParamName, flat.LivingArea);
-                            curRoom.SetValue(sets.flatAreaParamName, flat.AreaWithCoeff);
+                            curRoom.SetValue(sets.flatRoomAreaCoeffParamName, coeff, true);
+                            curRoom.SetValue(sets.flatRoomsCountParamName, flat.RoomsCount, true);
+                            curRoom.SetValue(sets.flatSumAreaParamName, flat.FullArea, true);
+                            curRoom.SetValue(sets.flatLivingAreaParamName, flat.LivingArea, true);
+                            curRoom.SetValue(sets.flatAreaParamName, flat.AreaWithCoeff, true);
 
                             int isLiving = 0;
                             if (livingRoomNames.Contains(roomName))
                                 isLiving = 1;
-                            curRoom.SetValue(sets.isLivingParamName, isLiving);
+                            curRoom.SetValue(sets.isLivingParamName, isLiving, true);
 
                         }
 
@@ -316,6 +316,16 @@ namespace ArchParametrisation
             }
         }
 
+        private string GetRoomNumber(Room r, Settings sets)
+        {
+            string roomNumber = null;
+            if (sets.useRoomName)
+                roomNumber = r.get_Parameter(BuiltInParameter.ROOM_NAME).AsString();
+            else
+                roomNumber = r.Number;
+            return roomNumber;
+        }
+
         private void WriteFinishSequence(Room r, string roomNumbersParamName, string separator, HashSet<string> curTypeRoomNumbers)
         {
             List<string> numbers = curTypeRoomNumbers.ToList();
@@ -323,7 +333,7 @@ namespace ArchParametrisation
 
             string numbersJoined = string.Join(separator, numbers);
 
-            r.SetValue(roomNumbersParamName, numbersJoined);
+            r.SetValue(roomNumbersParamName, numbersJoined, true);
         }
 
         private string GetFinishingName(Room r, List<BuiltInParameter> parameters)

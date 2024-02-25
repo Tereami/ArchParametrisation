@@ -13,6 +13,8 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #region Usings
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +60,7 @@ namespace ArchParametrisation
             foreach (FamilyInstance fi in openings)
             {
                 List<Room> curRooms = new List<Room>();
-                Room room1 = fi.Room;
+                Room room1 = fi.ToRoom;
                 Room room2 = fi.FromRoom;
 
                 if (room1 != null && room2 != null)
@@ -114,15 +116,27 @@ namespace ArchParametrisation
             return param;
         }
 
-        public static void SetValue<T>(this Element elem, string paramName, T value)
+        public static void SetValue<T>(this Element elem, string paramName, T value, bool ShowErrors)
         {
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
-                throw new Exception("Нет параметра " + paramName
-                    + " в элементе " + elem.Id.IntegerValue);
+            {
+                string msg = $"Нет параметра {paramName} в элементе {elem.Id.IntegerValue}";
+                Debug.WriteLine(msg);
+                if (ShowErrors)
+                    throw new Exception(msg);
+                else
+                    return;
+            }
             if (p.IsReadOnly)
-                throw new Exception("Параметр недоступен: " + paramName
-                    + " в элементе " + elem.Id.IntegerValue);
+            {
+                string msg = $"Параметр {paramName} недоступен для записи в элементе {elem.Id.IntegerValue}";
+                Debug.WriteLine(msg);
+                if (ShowErrors)
+                    throw new Exception(msg);
+                else
+                    return;
+            }
 
             if (value is string stringvalue)
                 p.Set(stringvalue);

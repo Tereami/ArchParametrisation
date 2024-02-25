@@ -41,6 +41,7 @@ namespace ArchParametrisation
         public string numbersOfFloorTypesParamName = "АР_НомераПомещенийПоТипуПола";
         public string numbersOfFinishingParamName = "АР_НомераПомещенийВедОтделки";
         public bool chkbxFloorsIncludeInFinishing = false;
+        public bool useRoomName = false;
 
         public bool enableRoomNumberToFinishing = false;
         public string roomNumberParamName = "АР_НомерПомещения";
