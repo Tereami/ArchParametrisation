@@ -36,7 +36,7 @@ namespace ArchParametrisation
         {
             Coeff = 1;
             IsLiving = false;
-            RoomElemId = room.Id.IntegerValue;
+            RoomElemId = room.Id.GetElementIdValue();
         }
 
         public RoomInfo(string name, double coeff, bool isLive)

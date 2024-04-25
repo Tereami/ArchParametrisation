@@ -109,7 +109,7 @@ namespace ArchParametrisation
 
                     foreach (Room r in rooms)
                     {
-                        int roomId = r.Id.IntegerValue;
+                        int roomId = r.Id.GetElementIdValue();
                         double sumOpeningsArea = 0;
                         if (roomIdsAndOpenings.ContainsKey(roomId))
                         {
@@ -157,7 +157,7 @@ namespace ArchParametrisation
 
                     foreach (Room r in rooms)
                     {
-                        int roomId = r.Id.IntegerValue;
+                        int roomId = r.Id.GetElementIdValue();
                         string roomNumber = GetRoomNumber(r, sets);
 
                         string floorTypeName = GetFinishingName(r, floorParameters);
@@ -171,7 +171,7 @@ namespace ArchParametrisation
 
                     foreach (Room r in rooms)
                     {
-                        int roomId = r.Id.IntegerValue;
+                        int roomId = r.Id.GetElementIdValue();
 
                         string floorTypeName = roomIdsAndFloorNames[roomId];
                         HashSet<string> floorTypeNumbers = floorTypesAndRoomNumbers[floorTypeName];

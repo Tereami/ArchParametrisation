@@ -27,6 +27,17 @@ namespace ArchParametrisation
 {
     public static class Extensions
     {
+        public static int GetElementIdValue(this ElementId id)
+        {
+            int result = 0;
+#if R2017 || R2018 || R2019 || R2020 || R2021 || R2022  || R2023
+            result = id.IntegerValue;
+#else
+            result = (int)id.Value;
+#endif
+            return result;
+        }
+
         public static List<FamilyInstance> GetMirroredElements(this Document doc)
         {
             List<FamilyInstance> col = new FilteredElementCollector(doc)
@@ -65,9 +76,9 @@ namespace ArchParametrisation
 
                 if (room1 != null && room2 != null)
                 {
-                    if (room1.Id.IntegerValue == room2.Id.IntegerValue)
+                    if (room1.Id.GetElementIdValue() == room2.Id.GetElementIdValue())
                     {
-                        string msg = "Неверная принадлежность к помещениям у элемента id" + fi.Id.IntegerValue.ToString();
+                        string msg = "Неверная принадлежность к помещениям у элемента id" + fi.Id.GetElementIdValue().ToString();
                         TaskDialog.Show("Error", msg);
                         throw new Exception(msg);
                     }
@@ -79,7 +90,7 @@ namespace ArchParametrisation
                 foreach (Room r in curRooms)
                 {
                     if (r == null) continue;
-                    int roomId = r.Id.IntegerValue;
+                    int roomId = r.Id.GetElementIdValue();
                     if (roomIdsAndOpenings.ContainsKey(roomId))
                         roomIdsAndOpenings[roomId].Add(fi);
                     else
@@ -121,7 +132,7 @@ namespace ArchParametrisation
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
             {
-                string msg = $"Нет параметра {paramName} в элементе {elem.Id.IntegerValue}";
+                string msg = $"Нет параметра {paramName} в элементе {elem.Id.GetElementIdValue()}";
                 Debug.WriteLine(msg);
                 if (ShowErrors)
                     throw new Exception(msg);
@@ -130,7 +141,7 @@ namespace ArchParametrisation
             }
             if (p.IsReadOnly)
             {
-                string msg = $"Параметр {paramName} недоступен для записи в элементе {elem.Id.IntegerValue}";
+                string msg = $"Параметр {paramName} недоступен для записи в элементе {elem.Id.GetElementIdValue()}";
                 Debug.WriteLine(msg);
                 if (ShowErrors)
                     throw new Exception(msg);
@@ -155,8 +166,8 @@ namespace ArchParametrisation
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
                 throw new Exception("Нет параметра " + paramName
-                    + " в элементе " + elem.Id.IntegerValue);
-            if(!p.HasValue)
+                    + " в элементе " + elem.Id.GetElementIdValue());
+            if (!p.HasValue)
                 return default(T);
 
             switch (p.StorageType)
