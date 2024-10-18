@@ -36,6 +36,7 @@ namespace ArchParametrisation
         public string openingsWidthParamName = "Ширина";
         public string openingsHeightParamName = "Высота";
         public string openingsAreaParamName = "АР_ПлощПроемов";
+        public bool openingsCalculateInOneRoom = false;
 
         public bool enableNumbersOfFinishings = false;
         public string numbersOfFloorTypesParamName = "АР_НомераПомещенийПоТипуПола";

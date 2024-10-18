@@ -42,6 +42,7 @@ namespace ArchParametrisation
             txtbxOpeningWidthParam.Text = s.openingsWidthParamName;
             txtbxOpeningHeightParam.Text = s.openingsHeightParamName;
             txtbxOpeningsAreaParam.Text = s.openingsAreaParamName;
+            chkBoxCalculateOneRoomOpenings.Checked = s.openingsCalculateInOneRoom;
 
             chkboxRoomFinishingSequenceNumbers.Checked = s.enableNumbersOfFinishings;
             txtbxFloorNumbers.Text = s.numbersOfFloorTypesParamName;
@@ -122,6 +123,7 @@ namespace ArchParametrisation
             curSettings.openingsWidthParamName = txtbxOpeningWidthParam.Text;
             curSettings.openingsHeightParamName = txtbxOpeningHeightParam.Text;
             curSettings.openingsAreaParamName = txtbxOpeningsAreaParam.Text;
+            curSettings.openingsCalculateInOneRoom = chkBoxCalculateOneRoomOpenings.Checked;
 
             curSettings.enableNumbersOfFinishings = chkboxRoomFinishingSequenceNumbers.Checked;
             curSettings.numbersOfFloorTypesParamName = txtbxFloorNumbers.Text;

@@ -50,7 +50,7 @@ namespace ArchParametrisation
             return col;
         }
 
-        public static Dictionary<int, List<FamilyInstance>> GetOpenings(this Document doc)
+        public static Dictionary<int, List<FamilyInstance>> GetOpenings(this Document doc, Settings sets)
         {
             List<ElementId> openingsCategories = new List<ElementId>
                 {
@@ -74,18 +74,37 @@ namespace ArchParametrisation
                 Room room1 = fi.ToRoom;
                 Room room2 = fi.FromRoom;
 
-                if (room1 != null && room2 != null)
+                if(room1 == null && room2 == null)
                 {
-                    if (room1.Id.GetElementIdValue() == room2.Id.GetElementIdValue())
+                    Debug.WriteLine($"Opening id {fi.Id} is not in a room. Maybe model error");
+                    continue;
+                }
+                else if(room1 != null && room2 == null)
+                {
+                    curRooms.Add(room1);
+                }
+                else if(room1 == null && room2 != null)
+                {
+                    curRooms.Add(room2);
+                }
+                else
+                {
+                    if (room1.Id == room2.Id)
                     {
-                        string msg = "Неверная принадлежность к помещениям у элемента id" + fi.Id.GetElementIdValue().ToString();
-                        TaskDialog.Show("Error", msg);
-                        throw new Exception(msg);
+                        Debug.WriteLine($"Opening id {fi.Id} is entirely in the one room id {room1.Id}. Maybe model error");
+                        if(sets.openingsCalculateInOneRoom)
+                        {
+                            curRooms.Add(room1);
+                        }
+                    }
+                    else
+                    {
+                        curRooms.Add(room1);
+                        curRooms.Add(room2);
                     }
                 }
 
-                curRooms.Add(room1);
-                curRooms.Add(room2);
+                
 
                 foreach (Room r in curRooms)
                 {

@@ -13,6 +13,7 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #region Usings
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,12 @@ namespace ArchParametrisation
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            Trace.Listeners.Clear();
+            Trace.Listeners.Add(new RbsLogger.Logger("ArchParametrisation"));
+
             Document doc = commandData.Application.ActiveUIDocument.Document;
             Settings sets = Settings.Activate();
-
+            Debug.WriteLine($"Settings is loaded");
 
             List<Room> rooms = new FilteredElementCollector(doc)
                 .WhereElementIsNotElementType()
@@ -39,6 +43,7 @@ namespace ArchParametrisation
                 .Cast<Room>()
                 .Where(r => r.Area > 0)
                 .ToList();
+            Debug.WriteLine($"Rooms found: {rooms.Count}");
 
             Dictionary<string, RoomInfo> roomInfosDraft = new Dictionary<string, RoomInfo>();
 
@@ -75,6 +80,7 @@ namespace ArchParametrisation
             FormArchParametrisation form = new FormArchParametrisation(sets);
             if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
             {
+                Debug.WriteLine("Cancelled");
                 return Result.Cancelled;
             }
 
@@ -84,6 +90,7 @@ namespace ArchParametrisation
             int mirroredCount = 0;
             if (sets.enableMirrored)
             {
+                Debug.WriteLine("MIRRORED");
                 using (Transaction t = new Transaction(doc))
                 {
                     t.Start("Поиск отзеркаленных");
@@ -96,16 +103,18 @@ namespace ArchParametrisation
                     t.Commit();
                 }
 
-                messages.Add("Найдено отзеркаленных элементов: " + mirroredCount);
+                Debug.WriteLine($"Mirrored found: {mirroredCount}");
+                messages.Add($"Найдено отзеркаленных элементов: {mirroredCount}");
             }
 
             int openingsCount = 0;
             if (sets.enableOpeningsArea)
             {
+                Debug.WriteLine("OPENINGS AREA");
                 using (Transaction t = new Transaction(doc))
                 {
                     t.Start("Площади проемов");
-                    Dictionary<int, List<FamilyInstance>> roomIdsAndOpenings = doc.GetOpenings();
+                    Dictionary<int, List<FamilyInstance>> roomIdsAndOpenings = doc.GetOpenings(sets);
 
                     foreach (Room r in rooms)
                     {
@@ -128,12 +137,14 @@ namespace ArchParametrisation
                     }
                     t.Commit();
                 }
-                messages.Add("Найдено проёмов: " + openingsCount);
+                Debug.WriteLine($"Openings found: {openingsCount}");
+                messages.Add($"Найдено проёмов: {openingsCount}");
             }
 
             int roomsCount = 0;
             if (sets.enableNumbersOfFinishings)
             {
+                Debug.WriteLine("ROOMS FINISHING");
                 using (Transaction t = new Transaction(doc))
                 {
                     t.Start("Ведомость отделки");
@@ -186,12 +197,14 @@ namespace ArchParametrisation
 
                     t.Commit();
                 }
-                messages.Add("Номера по типам отделки прописаны для: " + roomsCount + " помещений");
+                Debug.WriteLine($"Finishing numbers are written for {roomsCount} rooms");
+                messages.Add($"Номера по типам отделки прописаны для: {roomsCount} помещений");
             }
 
             int wallCount = 0;
             if (sets.enableRoomNumberToFinishing)
             {
+                Debug.WriteLine($"3D FINISHING");
                 using (Transaction t = new Transaction(doc))
                 {
                     t.Start("Номера помещений в отделку");
@@ -209,12 +222,14 @@ namespace ArchParametrisation
 
                     t.Commit();
                 }
-                messages.Add("Номера помещений прописаны для " + wallCount + " стен");
+                Debug.WriteLine($"Finishing numbers are written for {wallCount} walls");
+                messages.Add($"Номера помещений прописаны для {wallCount} стен");
             }
 
             int flatsCount = 0;
             if (sets.enableFlatography)
             {
+                Debug.WriteLine($"FLATOGRAPHY");
                 List<string> livingRoomNames = sets.RoomInfos.Where(i => i.IsLiving).Select(i => i.Name).ToList();
                 Dictionary<string, double> roomCoefs = new Dictionary<string, double>();
                 foreach (RoomInfo ri in sets.RoomInfos)
@@ -289,12 +304,14 @@ namespace ArchParametrisation
 
                     t.Commit();
                 }
-                messages.Add("Обработано квартир: " + flatsCount.ToString());
+                Debug.WriteLine($"Flats completed: {flatsCount}");
+                messages.Add($"Обработано квартир: {flatsCount}");
             }
 
             sets.Save();
 
             string msg = string.Join(System.Environment.NewLine, messages);
+            Debug.WriteLine(msg);
 
             BalloonTip.Show("АР параметризация выполнена!", msg);
             return Result.Succeeded;

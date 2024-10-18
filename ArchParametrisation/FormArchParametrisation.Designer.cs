@@ -29,654 +29,694 @@ namespace ArchParametrisation
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOk = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtbxMirroredParameter = new System.Windows.Forms.TextBox();
-            this.txtbxMirroredText = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkbxActivateMirrored = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtbxOpeningsAreaParam = new System.Windows.Forms.TextBox();
-            this.txtbxOpeningHeightParam = new System.Windows.Forms.TextBox();
-            this.txtbxOpeningWidthParam = new System.Windows.Forms.TextBox();
-            this.chkbxActivateOpeningsArea = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkbxFloorsIncludeInFinishing = new System.Windows.Forms.CheckBox();
-            this.chkboxRoomFinishingSequenceNumbers = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtbxWallNumbers = new System.Windows.Forms.TextBox();
-            this.txtbxFloorNumbers = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtbxFinishingRoomNumberParam = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtbxFlatNumber = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.RommName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomCoeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomIsLiving = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.chkbxActivateFlatography = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtbxIsLivingParam = new System.Windows.Forms.TextBox();
-            this.txtbxAreaCoeff = new System.Windows.Forms.TextBox();
-            this.txtbxRoomCount = new System.Windows.Forms.TextBox();
-            this.txtbxFlatLivingArea = new System.Windows.Forms.TextBox();
-            this.txtbxFlatSumArea = new System.Windows.Forms.TextBox();
-            this.txtbxFlatArea = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.chxbxRoomNumberToFinishing = new System.Windows.Forms.CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.checkBoxUseRoomNames = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.SuspendLayout();
+            buttonCancel = new System.Windows.Forms.Button();
+            buttonOk = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            txtbxMirroredParameter = new System.Windows.Forms.TextBox();
+            txtbxMirroredText = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            chkbxActivateMirrored = new System.Windows.Forms.CheckBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            chkBoxCalculateOneRoomOpenings = new System.Windows.Forms.CheckBox();
+            txtbxOpeningsAreaParam = new System.Windows.Forms.TextBox();
+            txtbxOpeningHeightParam = new System.Windows.Forms.TextBox();
+            txtbxOpeningWidthParam = new System.Windows.Forms.TextBox();
+            chkbxActivateOpeningsArea = new System.Windows.Forms.CheckBox();
+            label4 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            checkBoxUseRoomNames = new System.Windows.Forms.CheckBox();
+            chkbxFloorsIncludeInFinishing = new System.Windows.Forms.CheckBox();
+            chkboxRoomFinishingSequenceNumbers = new System.Windows.Forms.CheckBox();
+            label8 = new System.Windows.Forms.Label();
+            txtbxWallNumbers = new System.Windows.Forms.TextBox();
+            txtbxFloorNumbers = new System.Windows.Forms.TextBox();
+            label11 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            txtbxFinishingRoomNumberParam = new System.Windows.Forms.TextBox();
+            label19 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            txtbxFlatNumber = new System.Windows.Forms.TextBox();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            RommName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            RoomCoeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            RoomIsLiving = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            chkbxActivateFlatography = new System.Windows.Forms.CheckBox();
+            label18 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            txtbxIsLivingParam = new System.Windows.Forms.TextBox();
+            txtbxAreaCoeff = new System.Windows.Forms.TextBox();
+            txtbxRoomCount = new System.Windows.Forms.TextBox();
+            txtbxFlatLivingArea = new System.Windows.Forms.TextBox();
+            txtbxFlatSumArea = new System.Windows.Forms.TextBox();
+            txtbxFlatArea = new System.Windows.Forms.TextBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            chxbxRoomNumberToFinishing = new System.Windows.Forms.CheckBox();
+            label20 = new System.Windows.Forms.Label();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox5.SuspendLayout();
+            SuspendLayout();
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(378, 925);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 0;
-            this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            buttonCancel.Location = new System.Drawing.Point(441, 1067);
+            buttonCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new System.Drawing.Size(88, 27);
+            buttonCancel.TabIndex = 0;
+            buttonCancel.Text = "Отмена";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonOk
             // 
-            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOk.Location = new System.Drawing.Point(297, 925);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonOk.Location = new System.Drawing.Point(346, 1067);
+            buttonOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            buttonOk.Name = "buttonOk";
+            buttonOk.Size = new System.Drawing.Size(88, 27);
+            buttonOk.TabIndex = 0;
+            buttonOk.Text = "OK";
+            buttonOk.UseVisualStyleBackColor = true;
+            buttonOk.Click += buttonOk_Click;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtbxMirroredParameter);
-            this.groupBox1.Controls.Add(this.txtbxMirroredText);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.chkbxActivateMirrored);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(441, 89);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Отзеркаленные элементы";
+            groupBox1.Controls.Add(txtbxMirroredParameter);
+            groupBox1.Controls.Add(txtbxMirroredText);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(chkbxActivateMirrored);
+            groupBox1.Location = new System.Drawing.Point(14, 14);
+            groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox1.Size = new System.Drawing.Size(514, 103);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Отзеркаленные элементы";
             // 
             // txtbxMirroredParameter
             // 
-            this.txtbxMirroredParameter.Location = new System.Drawing.Point(227, 42);
-            this.txtbxMirroredParameter.Name = "txtbxMirroredParameter";
-            this.txtbxMirroredParameter.Size = new System.Drawing.Size(208, 20);
-            this.txtbxMirroredParameter.TabIndex = 3;
-            this.txtbxMirroredParameter.Text = "Комментарии";
+            txtbxMirroredParameter.Location = new System.Drawing.Point(265, 48);
+            txtbxMirroredParameter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxMirroredParameter.Name = "txtbxMirroredParameter";
+            txtbxMirroredParameter.Size = new System.Drawing.Size(242, 23);
+            txtbxMirroredParameter.TabIndex = 3;
+            txtbxMirroredParameter.Text = "Комментарии";
             // 
             // txtbxMirroredText
             // 
-            this.txtbxMirroredText.Location = new System.Drawing.Point(90, 42);
-            this.txtbxMirroredText.Name = "txtbxMirroredText";
-            this.txtbxMirroredText.Size = new System.Drawing.Size(57, 20);
-            this.txtbxMirroredText.TabIndex = 3;
-            this.txtbxMirroredText.Text = "Л";
+            txtbxMirroredText.Location = new System.Drawing.Point(105, 48);
+            txtbxMirroredText.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxMirroredText.Name = "txtbxMirroredText";
+            txtbxMirroredText.Size = new System.Drawing.Size(66, 23);
+            txtbxMirroredText.TabIndex = 3;
+            txtbxMirroredText.Text = "Л";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 68);
-            this.label3.Margin = new System.Windows.Forms.Padding(3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(383, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Будут обработаны все экземпляры семейств со свойством Mirrored = true";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(4, 78);
+            label3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(416, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Будут обработаны все экземпляры семейств со свойством Mirrored = true";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 45);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "в параметр:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(178, 52);
+            label2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(72, 15);
+            label2.TabIndex = 2;
+            label2.Text = "в параметр:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 45);
-            this.label1.Margin = new System.Windows.Forms.Padding(3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Вписать текст:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(4, 52);
+            label1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(85, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Вписать текст:";
             // 
             // chkbxActivateMirrored
             // 
-            this.chkbxActivateMirrored.AutoSize = true;
-            this.chkbxActivateMirrored.Checked = true;
-            this.chkbxActivateMirrored.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbxActivateMirrored.Location = new System.Drawing.Point(6, 19);
-            this.chkbxActivateMirrored.Name = "chkbxActivateMirrored";
-            this.chkbxActivateMirrored.Size = new System.Drawing.Size(97, 17);
-            this.chkbxActivateMirrored.TabIndex = 2;
-            this.chkbxActivateMirrored.Text = "Активировать";
-            this.chkbxActivateMirrored.UseVisualStyleBackColor = true;
-            this.chkbxActivateMirrored.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            chkbxActivateMirrored.AutoSize = true;
+            chkbxActivateMirrored.Checked = true;
+            chkbxActivateMirrored.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkbxActivateMirrored.Location = new System.Drawing.Point(7, 22);
+            chkbxActivateMirrored.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkbxActivateMirrored.Name = "chkbxActivateMirrored";
+            chkbxActivateMirrored.Size = new System.Drawing.Size(102, 19);
+            chkbxActivateMirrored.TabIndex = 2;
+            chkbxActivateMirrored.Text = "Активировать";
+            chkbxActivateMirrored.UseVisualStyleBackColor = true;
+            chkbxActivateMirrored.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtbxOpeningsAreaParam);
-            this.groupBox2.Controls.Add(this.txtbxOpeningHeightParam);
-            this.groupBox2.Controls.Add(this.txtbxOpeningWidthParam);
-            this.groupBox2.Controls.Add(this.chkbxActivateOpeningsArea);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(12, 107);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(441, 132);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Площадь проёмов";
+            groupBox2.Controls.Add(chkBoxCalculateOneRoomOpenings);
+            groupBox2.Controls.Add(txtbxOpeningsAreaParam);
+            groupBox2.Controls.Add(txtbxOpeningHeightParam);
+            groupBox2.Controls.Add(txtbxOpeningWidthParam);
+            groupBox2.Controls.Add(chkbxActivateOpeningsArea);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Location = new System.Drawing.Point(14, 123);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(514, 152);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Площадь проёмов";
+            // 
+            // chkBoxCalculateOneRoomOpenings
+            // 
+            chkBoxCalculateOneRoomOpenings.AutoSize = true;
+            chkBoxCalculateOneRoomOpenings.Location = new System.Drawing.Point(181, 20);
+            chkBoxCalculateOneRoomOpenings.Name = "chkBoxCalculateOneRoomOpenings";
+            chkBoxCalculateOneRoomOpenings.Size = new System.Drawing.Size(306, 19);
+            chkBoxCalculateOneRoomOpenings.TabIndex = 4;
+            chkBoxCalculateOneRoomOpenings.Text = "Учитывать проемы в пределах одного помещения";
+            chkBoxCalculateOneRoomOpenings.UseVisualStyleBackColor = true;
             // 
             // txtbxOpeningsAreaParam
             // 
-            this.txtbxOpeningsAreaParam.Location = new System.Drawing.Point(227, 65);
-            this.txtbxOpeningsAreaParam.Name = "txtbxOpeningsAreaParam";
-            this.txtbxOpeningsAreaParam.Size = new System.Drawing.Size(208, 20);
-            this.txtbxOpeningsAreaParam.TabIndex = 3;
-            this.txtbxOpeningsAreaParam.Text = "АР_ПлощадьПроёмов";
+            txtbxOpeningsAreaParam.Location = new System.Drawing.Point(265, 75);
+            txtbxOpeningsAreaParam.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxOpeningsAreaParam.Name = "txtbxOpeningsAreaParam";
+            txtbxOpeningsAreaParam.Size = new System.Drawing.Size(242, 23);
+            txtbxOpeningsAreaParam.TabIndex = 3;
+            txtbxOpeningsAreaParam.Text = "АР_ПлощадьПроёмов";
             // 
             // txtbxOpeningHeightParam
             // 
-            this.txtbxOpeningHeightParam.Location = new System.Drawing.Point(329, 39);
-            this.txtbxOpeningHeightParam.Name = "txtbxOpeningHeightParam";
-            this.txtbxOpeningHeightParam.Size = new System.Drawing.Size(106, 20);
-            this.txtbxOpeningHeightParam.TabIndex = 3;
-            this.txtbxOpeningHeightParam.Text = "Высота";
+            txtbxOpeningHeightParam.Location = new System.Drawing.Point(384, 45);
+            txtbxOpeningHeightParam.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxOpeningHeightParam.Name = "txtbxOpeningHeightParam";
+            txtbxOpeningHeightParam.Size = new System.Drawing.Size(123, 23);
+            txtbxOpeningHeightParam.TabIndex = 3;
+            txtbxOpeningHeightParam.Text = "Высота";
             // 
             // txtbxOpeningWidthParam
             // 
-            this.txtbxOpeningWidthParam.Location = new System.Drawing.Point(154, 39);
-            this.txtbxOpeningWidthParam.Name = "txtbxOpeningWidthParam";
-            this.txtbxOpeningWidthParam.Size = new System.Drawing.Size(105, 20);
-            this.txtbxOpeningWidthParam.TabIndex = 3;
-            this.txtbxOpeningWidthParam.Text = "Ширина";
+            txtbxOpeningWidthParam.Location = new System.Drawing.Point(180, 45);
+            txtbxOpeningWidthParam.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxOpeningWidthParam.Name = "txtbxOpeningWidthParam";
+            txtbxOpeningWidthParam.Size = new System.Drawing.Size(122, 23);
+            txtbxOpeningWidthParam.TabIndex = 3;
+            txtbxOpeningWidthParam.Text = "Ширина";
             // 
             // chkbxActivateOpeningsArea
             // 
-            this.chkbxActivateOpeningsArea.AutoSize = true;
-            this.chkbxActivateOpeningsArea.Checked = true;
-            this.chkbxActivateOpeningsArea.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbxActivateOpeningsArea.Location = new System.Drawing.Point(6, 19);
-            this.chkbxActivateOpeningsArea.Name = "chkbxActivateOpeningsArea";
-            this.chkbxActivateOpeningsArea.Size = new System.Drawing.Size(97, 17);
-            this.chkbxActivateOpeningsArea.TabIndex = 0;
-            this.chkbxActivateOpeningsArea.Text = "Активировать";
-            this.chkbxActivateOpeningsArea.UseVisualStyleBackColor = true;
-            this.chkbxActivateOpeningsArea.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
+            chkbxActivateOpeningsArea.AutoSize = true;
+            chkbxActivateOpeningsArea.Checked = true;
+            chkbxActivateOpeningsArea.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkbxActivateOpeningsArea.Location = new System.Drawing.Point(7, 22);
+            chkbxActivateOpeningsArea.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkbxActivateOpeningsArea.Name = "chkbxActivateOpeningsArea";
+            chkbxActivateOpeningsArea.Size = new System.Drawing.Size(102, 19);
+            chkbxActivateOpeningsArea.TabIndex = 0;
+            chkbxActivateOpeningsArea.Text = "Активировать";
+            chkbxActivateOpeningsArea.UseVisualStyleBackColor = true;
+            chkbxActivateOpeningsArea.CheckedChanged += chkbxInGroup_CheckedChanged;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(3, 91);
-            this.label4.Margin = new System.Windows.Forms.Padding(3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(429, 35);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Будут найдены проёмы (окна/двери) в стенах, ограничивающих помещение, и площадь п" +
-    "роёмов будет вписана в соответствующий параметр в помещении.";
+            label4.Location = new System.Drawing.Point(4, 105);
+            label4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(500, 40);
+            label4.TabIndex = 2;
+            label4.Text = "Будут найдены проёмы (окна/двери) в стенах, ограничивающих помещение, и площадь проёмов будет вписана в соответствующий параметр в помещении.";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(265, 42);
-            this.label6.Margin = new System.Windows.Forms.Padding(3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "и высоты:";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(309, 48);
+            label6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(62, 15);
+            label6.TabIndex = 2;
+            label6.Text = "и высоты:";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 68);
-            this.label7.Margin = new System.Windows.Forms.Padding(3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(177, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Параметр для прощади проёмов:";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(4, 78);
+            label7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(193, 15);
+            label7.TabIndex = 2;
+            label7.Text = "Параметр для прощади проёмов:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Параметр ширины проёма:";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(4, 48);
+            label5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(161, 15);
+            label5.TabIndex = 2;
+            label5.Text = "Параметр ширины проёма:";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBoxUseRoomNames);
-            this.groupBox3.Controls.Add(this.chkbxFloorsIncludeInFinishing);
-            this.groupBox3.Controls.Add(this.chkboxRoomFinishingSequenceNumbers);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.txtbxWallNumbers);
-            this.groupBox3.Controls.Add(this.txtbxFloorNumbers);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Location = new System.Drawing.Point(12, 245);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 167);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Помещения по типу отделки";
-            // 
-            // chkbxFloorsIncludeInFinishing
-            // 
-            this.chkbxFloorsIncludeInFinishing.AutoSize = true;
-            this.chkbxFloorsIncludeInFinishing.Location = new System.Drawing.Point(43, 87);
-            this.chkbxFloorsIncludeInFinishing.Name = "chkbxFloorsIncludeInFinishing";
-            this.chkbxFloorsIncludeInFinishing.Size = new System.Drawing.Size(163, 17);
-            this.chkbxFloorsIncludeInFinishing.TabIndex = 5;
-            this.chkbxFloorsIncludeInFinishing.Text = "Учитывать полы в отделке";
-            this.chkbxFloorsIncludeInFinishing.UseVisualStyleBackColor = true;
-            // 
-            // chkboxRoomFinishingSequenceNumbers
-            // 
-            this.chkboxRoomFinishingSequenceNumbers.AutoSize = true;
-            this.chkboxRoomFinishingSequenceNumbers.Checked = true;
-            this.chkboxRoomFinishingSequenceNumbers.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkboxRoomFinishingSequenceNumbers.Location = new System.Drawing.Point(6, 19);
-            this.chkboxRoomFinishingSequenceNumbers.Name = "chkboxRoomFinishingSequenceNumbers";
-            this.chkboxRoomFinishingSequenceNumbers.Size = new System.Drawing.Size(97, 17);
-            this.chkboxRoomFinishingSequenceNumbers.TabIndex = 4;
-            this.chkboxRoomFinishingSequenceNumbers.Text = "Активировать";
-            this.chkboxRoomFinishingSequenceNumbers.UseVisualStyleBackColor = true;
-            this.chkboxRoomFinishingSequenceNumbers.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(3, 110);
-            this.label8.Margin = new System.Windows.Forms.Padding(3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(426, 26);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "В каждое помещение будут прописаны номера помещений, имеющих тот же тип отделки.";
-            // 
-            // txtbxWallNumbers
-            // 
-            this.txtbxWallNumbers.Location = new System.Drawing.Point(227, 65);
-            this.txtbxWallNumbers.Name = "txtbxWallNumbers";
-            this.txtbxWallNumbers.Size = new System.Drawing.Size(208, 20);
-            this.txtbxWallNumbers.TabIndex = 3;
-            this.txtbxWallNumbers.Text = "АР_НомераПоТипуСтен";
-            // 
-            // txtbxFloorNumbers
-            // 
-            this.txtbxFloorNumbers.Location = new System.Drawing.Point(227, 39);
-            this.txtbxFloorNumbers.Name = "txtbxFloorNumbers";
-            this.txtbxFloorNumbers.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFloorNumbers.TabIndex = 3;
-            this.txtbxFloorNumbers.Text = "АР_НомераПоТипуПола";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 68);
-            this.label11.Margin = new System.Windows.Forms.Padding(3);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(167, 13);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Перечисление по типу отделки:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 42);
-            this.label10.Margin = new System.Windows.Forms.Padding(3);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(150, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Перечисление по типу пола:";
-            // 
-            // txtbxFinishingRoomNumberParam
-            // 
-            this.txtbxFinishingRoomNumberParam.Location = new System.Drawing.Point(227, 39);
-            this.txtbxFinishingRoomNumberParam.Name = "txtbxFinishingRoomNumberParam";
-            this.txtbxFinishingRoomNumberParam.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFinishingRoomNumberParam.TabIndex = 3;
-            this.txtbxFinishingRoomNumberParam.Text = "АР_НомерПомещения";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 42);
-            this.label19.Margin = new System.Windows.Forms.Padding(3);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(164, 13);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "Параметр номера помещения:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 42);
-            this.label9.Margin = new System.Windows.Forms.Padding(3);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Параметр номера квартиры:";
-            // 
-            // txtbxFlatNumber
-            // 
-            this.txtbxFlatNumber.Location = new System.Drawing.Point(227, 39);
-            this.txtbxFlatNumber.Name = "txtbxFlatNumber";
-            this.txtbxFlatNumber.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFlatNumber.TabIndex = 3;
-            this.txtbxFlatNumber.Text = "АР_НомерКвартиры";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.chkbxActivateFlatography);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.txtbxIsLivingParam);
-            this.groupBox4.Controls.Add(this.txtbxAreaCoeff);
-            this.groupBox4.Controls.Add(this.txtbxRoomCount);
-            this.groupBox4.Controls.Add(this.txtbxFlatLivingArea);
-            this.groupBox4.Controls.Add(this.txtbxFlatSumArea);
-            this.groupBox4.Controls.Add(this.txtbxFlatArea);
-            this.groupBox4.Controls.Add(this.txtbxFlatNumber);
-            this.groupBox4.Location = new System.Drawing.Point(12, 528);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(441, 391);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Квартирография";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RommName,
-            this.RoomCoeff,
-            this.RoomIsLiving});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 243);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 142);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.EnabledChanged += new System.EventHandler(this.dataGridView1_EnabledChanged);
-            // 
-            // RommName
-            // 
-            this.RommName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RommName.HeaderText = "Имя помещения";
-            this.RommName.Name = "RommName";
-            this.RommName.ReadOnly = true;
-            // 
-            // RoomCoeff
-            // 
-            this.RoomCoeff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RoomCoeff.FillWeight = 50F;
-            this.RoomCoeff.HeaderText = "Коэффициент площади";
-            this.RoomCoeff.Name = "RoomCoeff";
-            // 
-            // RoomIsLiving
-            // 
-            this.RoomIsLiving.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RoomIsLiving.FillWeight = 30F;
-            this.RoomIsLiving.HeaderText = "Жилое";
-            this.RoomIsLiving.Name = "RoomIsLiving";
-            // 
-            // chkbxActivateFlatography
-            // 
-            this.chkbxActivateFlatography.AutoSize = true;
-            this.chkbxActivateFlatography.Checked = true;
-            this.chkbxActivateFlatography.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbxActivateFlatography.Location = new System.Drawing.Point(6, 19);
-            this.chkbxActivateFlatography.Name = "chkbxActivateFlatography";
-            this.chkbxActivateFlatography.Size = new System.Drawing.Size(97, 17);
-            this.chkbxActivateFlatography.TabIndex = 0;
-            this.chkbxActivateFlatography.Text = "Активировать";
-            this.chkbxActivateFlatography.UseVisualStyleBackColor = true;
-            this.chkbxActivateFlatography.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 224);
-            this.label18.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(113, 13);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Данные помещений:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 198);
-            this.label12.Margin = new System.Windows.Forms.Padding(3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Метка жилого помещения:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 172);
-            this.label17.Margin = new System.Windows.Forms.Padding(3);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(187, 13);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Параметр коэффициента площади:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 146);
-            this.label16.Margin = new System.Windows.Forms.Padding(3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(183, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Параметр для количества комнат:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 120);
-            this.label15.Margin = new System.Windows.Forms.Padding(3);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(144, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Площадь квартиры жилая:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 94);
-            this.label14.Margin = new System.Windows.Forms.Padding(3);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(145, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Общая площадь квартиры:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 68);
-            this.label13.Margin = new System.Windows.Forms.Padding(3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(161, 13);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Параметр площади квартиры:";
-            // 
-            // txtbxIsLivingParam
-            // 
-            this.txtbxIsLivingParam.Location = new System.Drawing.Point(227, 195);
-            this.txtbxIsLivingParam.Name = "txtbxIsLivingParam";
-            this.txtbxIsLivingParam.Size = new System.Drawing.Size(208, 20);
-            this.txtbxIsLivingParam.TabIndex = 3;
-            this.txtbxIsLivingParam.Text = "Помещение жилое";
-            // 
-            // txtbxAreaCoeff
-            // 
-            this.txtbxAreaCoeff.Location = new System.Drawing.Point(227, 169);
-            this.txtbxAreaCoeff.Name = "txtbxAreaCoeff";
-            this.txtbxAreaCoeff.Size = new System.Drawing.Size(208, 20);
-            this.txtbxAreaCoeff.TabIndex = 3;
-            this.txtbxAreaCoeff.Text = "АР_КоэффПлощади";
-            // 
-            // txtbxRoomCount
-            // 
-            this.txtbxRoomCount.Location = new System.Drawing.Point(227, 143);
-            this.txtbxRoomCount.Name = "txtbxRoomCount";
-            this.txtbxRoomCount.Size = new System.Drawing.Size(208, 20);
-            this.txtbxRoomCount.TabIndex = 3;
-            this.txtbxRoomCount.Text = "АР_КолвоКомнат";
-            // 
-            // txtbxFlatLivingArea
-            // 
-            this.txtbxFlatLivingArea.Location = new System.Drawing.Point(227, 117);
-            this.txtbxFlatLivingArea.Name = "txtbxFlatLivingArea";
-            this.txtbxFlatLivingArea.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFlatLivingArea.TabIndex = 3;
-            this.txtbxFlatLivingArea.Text = "АР_ПлощадьКвартирыЖилая";
-            // 
-            // txtbxFlatSumArea
-            // 
-            this.txtbxFlatSumArea.Location = new System.Drawing.Point(227, 91);
-            this.txtbxFlatSumArea.Name = "txtbxFlatSumArea";
-            this.txtbxFlatSumArea.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFlatSumArea.TabIndex = 3;
-            this.txtbxFlatSumArea.Text = "АР_ПлощадьКвартирыОбщая";
-            // 
-            // txtbxFlatArea
-            // 
-            this.txtbxFlatArea.Location = new System.Drawing.Point(227, 65);
-            this.txtbxFlatArea.Name = "txtbxFlatArea";
-            this.txtbxFlatArea.Size = new System.Drawing.Size(208, 20);
-            this.txtbxFlatArea.TabIndex = 3;
-            this.txtbxFlatArea.Text = "АР_ПлощадьКвартиры";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.chxbxRoomNumberToFinishing);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.txtbxFinishingRoomNumberParam);
-            this.groupBox5.Location = new System.Drawing.Point(12, 418);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(441, 104);
-            this.groupBox5.TabIndex = 5;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Принадлежность 3D-отделки к помещениям";
-            // 
-            // chxbxRoomNumberToFinishing
-            // 
-            this.chxbxRoomNumberToFinishing.AutoSize = true;
-            this.chxbxRoomNumberToFinishing.Checked = true;
-            this.chxbxRoomNumberToFinishing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chxbxRoomNumberToFinishing.Location = new System.Drawing.Point(6, 19);
-            this.chxbxRoomNumberToFinishing.Name = "chxbxRoomNumberToFinishing";
-            this.chxbxRoomNumberToFinishing.Size = new System.Drawing.Size(97, 17);
-            this.chxbxRoomNumberToFinishing.TabIndex = 4;
-            this.chxbxRoomNumberToFinishing.Text = "Активировать";
-            this.chxbxRoomNumberToFinishing.UseVisualStyleBackColor = true;
-            this.chxbxRoomNumberToFinishing.CheckedChanged += new System.EventHandler(this.chkbxInGroup_CheckedChanged);
-            // 
-            // label20
-            // 
-            this.label20.Location = new System.Drawing.Point(3, 65);
-            this.label20.Margin = new System.Windows.Forms.Padding(3);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(426, 35);
-            this.label20.TabIndex = 2;
-            this.label20.Text = "В отделку, выполненную \"Стенами\", будет прописан номер помещения, которое они окр" +
-    "ужают.";
+            groupBox3.Controls.Add(checkBoxUseRoomNames);
+            groupBox3.Controls.Add(chkbxFloorsIncludeInFinishing);
+            groupBox3.Controls.Add(chkboxRoomFinishingSequenceNumbers);
+            groupBox3.Controls.Add(label8);
+            groupBox3.Controls.Add(txtbxWallNumbers);
+            groupBox3.Controls.Add(txtbxFloorNumbers);
+            groupBox3.Controls.Add(label11);
+            groupBox3.Controls.Add(label10);
+            groupBox3.Location = new System.Drawing.Point(14, 283);
+            groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox3.Size = new System.Drawing.Size(514, 193);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Помещения по типу отделки";
             // 
             // checkBoxUseRoomNames
             // 
-            this.checkBoxUseRoomNames.AutoSize = true;
-            this.checkBoxUseRoomNames.Location = new System.Drawing.Point(43, 142);
-            this.checkBoxUseRoomNames.Name = "checkBoxUseRoomNames";
-            this.checkBoxUseRoomNames.Size = new System.Drawing.Size(267, 17);
-            this.checkBoxUseRoomNames.TabIndex = 5;
-            this.checkBoxUseRoomNames.Text = "Использовать Имя помещения вместо номера";
-            this.checkBoxUseRoomNames.UseVisualStyleBackColor = true;
+            checkBoxUseRoomNames.AutoSize = true;
+            checkBoxUseRoomNames.Location = new System.Drawing.Point(50, 164);
+            checkBoxUseRoomNames.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            checkBoxUseRoomNames.Name = "checkBoxUseRoomNames";
+            checkBoxUseRoomNames.Size = new System.Drawing.Size(286, 19);
+            checkBoxUseRoomNames.TabIndex = 5;
+            checkBoxUseRoomNames.Text = "Использовать Имя помещения вместо номера";
+            checkBoxUseRoomNames.UseVisualStyleBackColor = true;
+            // 
+            // chkbxFloorsIncludeInFinishing
+            // 
+            chkbxFloorsIncludeInFinishing.AutoSize = true;
+            chkbxFloorsIncludeInFinishing.Location = new System.Drawing.Point(50, 100);
+            chkbxFloorsIncludeInFinishing.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkbxFloorsIncludeInFinishing.Name = "chkbxFloorsIncludeInFinishing";
+            chkbxFloorsIncludeInFinishing.Size = new System.Drawing.Size(172, 19);
+            chkbxFloorsIncludeInFinishing.TabIndex = 5;
+            chkbxFloorsIncludeInFinishing.Text = "Учитывать полы в отделке";
+            chkbxFloorsIncludeInFinishing.UseVisualStyleBackColor = true;
+            // 
+            // chkboxRoomFinishingSequenceNumbers
+            // 
+            chkboxRoomFinishingSequenceNumbers.AutoSize = true;
+            chkboxRoomFinishingSequenceNumbers.Checked = true;
+            chkboxRoomFinishingSequenceNumbers.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkboxRoomFinishingSequenceNumbers.Location = new System.Drawing.Point(7, 22);
+            chkboxRoomFinishingSequenceNumbers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkboxRoomFinishingSequenceNumbers.Name = "chkboxRoomFinishingSequenceNumbers";
+            chkboxRoomFinishingSequenceNumbers.Size = new System.Drawing.Size(102, 19);
+            chkboxRoomFinishingSequenceNumbers.TabIndex = 4;
+            chkboxRoomFinishingSequenceNumbers.Text = "Активировать";
+            chkboxRoomFinishingSequenceNumbers.UseVisualStyleBackColor = true;
+            chkboxRoomFinishingSequenceNumbers.CheckedChanged += chkbxInGroup_CheckedChanged;
+            // 
+            // label8
+            // 
+            label8.Location = new System.Drawing.Point(4, 127);
+            label8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(497, 30);
+            label8.TabIndex = 2;
+            label8.Text = "В каждое помещение будут прописаны номера помещений, имеющих тот же тип отделки.";
+            // 
+            // txtbxWallNumbers
+            // 
+            txtbxWallNumbers.Location = new System.Drawing.Point(265, 75);
+            txtbxWallNumbers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxWallNumbers.Name = "txtbxWallNumbers";
+            txtbxWallNumbers.Size = new System.Drawing.Size(242, 23);
+            txtbxWallNumbers.TabIndex = 3;
+            txtbxWallNumbers.Text = "АР_НомераПоТипуСтен";
+            // 
+            // txtbxFloorNumbers
+            // 
+            txtbxFloorNumbers.Location = new System.Drawing.Point(265, 45);
+            txtbxFloorNumbers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFloorNumbers.Name = "txtbxFloorNumbers";
+            txtbxFloorNumbers.Size = new System.Drawing.Size(242, 23);
+            txtbxFloorNumbers.TabIndex = 3;
+            txtbxFloorNumbers.Text = "АР_НомераПоТипуПола";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(4, 78);
+            label11.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(183, 15);
+            label11.TabIndex = 2;
+            label11.Text = "Перечисление по типу отделки:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(4, 48);
+            label10.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(166, 15);
+            label10.TabIndex = 2;
+            label10.Text = "Перечисление по типу пола:";
+            // 
+            // txtbxFinishingRoomNumberParam
+            // 
+            txtbxFinishingRoomNumberParam.Location = new System.Drawing.Point(265, 45);
+            txtbxFinishingRoomNumberParam.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFinishingRoomNumberParam.Name = "txtbxFinishingRoomNumberParam";
+            txtbxFinishingRoomNumberParam.Size = new System.Drawing.Size(242, 23);
+            txtbxFinishingRoomNumberParam.TabIndex = 3;
+            txtbxFinishingRoomNumberParam.Text = "АР_НомерПомещения";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(7, 48);
+            label19.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(179, 15);
+            label19.TabIndex = 2;
+            label19.Text = "Параметр номера помещения:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(4, 48);
+            label9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(166, 15);
+            label9.TabIndex = 2;
+            label9.Text = "Параметр номера квартиры:";
+            // 
+            // txtbxFlatNumber
+            // 
+            txtbxFlatNumber.Location = new System.Drawing.Point(265, 45);
+            txtbxFlatNumber.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFlatNumber.Name = "txtbxFlatNumber";
+            txtbxFlatNumber.Size = new System.Drawing.Size(242, 23);
+            txtbxFlatNumber.TabIndex = 3;
+            txtbxFlatNumber.Text = "АР_НомерКвартиры";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox4.Controls.Add(dataGridView1);
+            groupBox4.Controls.Add(chkbxActivateFlatography);
+            groupBox4.Controls.Add(label18);
+            groupBox4.Controls.Add(label12);
+            groupBox4.Controls.Add(label17);
+            groupBox4.Controls.Add(label16);
+            groupBox4.Controls.Add(label15);
+            groupBox4.Controls.Add(label14);
+            groupBox4.Controls.Add(label13);
+            groupBox4.Controls.Add(label9);
+            groupBox4.Controls.Add(txtbxIsLivingParam);
+            groupBox4.Controls.Add(txtbxAreaCoeff);
+            groupBox4.Controls.Add(txtbxRoomCount);
+            groupBox4.Controls.Add(txtbxFlatLivingArea);
+            groupBox4.Controls.Add(txtbxFlatSumArea);
+            groupBox4.Controls.Add(txtbxFlatArea);
+            groupBox4.Controls.Add(txtbxFlatNumber);
+            groupBox4.Location = new System.Drawing.Point(14, 609);
+            groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox4.Size = new System.Drawing.Size(514, 451);
+            groupBox4.TabIndex = 4;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Квартирография";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { RommName, RoomCoeff, RoomIsLiving });
+            dataGridView1.Location = new System.Drawing.Point(7, 280);
+            dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridView1.Size = new System.Drawing.Size(500, 164);
+            dataGridView1.TabIndex = 4;
+            dataGridView1.EnabledChanged += dataGridView1_EnabledChanged;
+            // 
+            // RommName
+            // 
+            RommName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            RommName.HeaderText = "Имя помещения";
+            RommName.Name = "RommName";
+            RommName.ReadOnly = true;
+            // 
+            // RoomCoeff
+            // 
+            RoomCoeff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            RoomCoeff.FillWeight = 50F;
+            RoomCoeff.HeaderText = "Коэффициент площади";
+            RoomCoeff.Name = "RoomCoeff";
+            // 
+            // RoomIsLiving
+            // 
+            RoomIsLiving.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            RoomIsLiving.FillWeight = 30F;
+            RoomIsLiving.HeaderText = "Жилое";
+            RoomIsLiving.Name = "RoomIsLiving";
+            // 
+            // chkbxActivateFlatography
+            // 
+            chkbxActivateFlatography.AutoSize = true;
+            chkbxActivateFlatography.Checked = true;
+            chkbxActivateFlatography.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkbxActivateFlatography.Location = new System.Drawing.Point(7, 22);
+            chkbxActivateFlatography.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chkbxActivateFlatography.Name = "chkbxActivateFlatography";
+            chkbxActivateFlatography.Size = new System.Drawing.Size(102, 19);
+            chkbxActivateFlatography.TabIndex = 0;
+            chkbxActivateFlatography.Text = "Активировать";
+            chkbxActivateFlatography.UseVisualStyleBackColor = true;
+            chkbxActivateFlatography.CheckedChanged += chkbxInGroup_CheckedChanged;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(4, 258);
+            label18.Margin = new System.Windows.Forms.Padding(4, 12, 4, 3);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(123, 15);
+            label18.TabIndex = 2;
+            label18.Text = "Данные помещений:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(4, 228);
+            label12.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(158, 15);
+            label12.TabIndex = 2;
+            label12.Text = "Метка жилого помещения:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(4, 198);
+            label17.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(204, 15);
+            label17.TabIndex = 2;
+            label17.Text = "Параметр коэффициента площади:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(4, 168);
+            label16.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(196, 15);
+            label16.TabIndex = 2;
+            label16.Text = "Параметр для количества комнат:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(4, 138);
+            label15.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(156, 15);
+            label15.TabIndex = 2;
+            label15.Text = "Площадь квартиры жилая:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(4, 108);
+            label14.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(158, 15);
+            label14.TabIndex = 2;
+            label14.Text = "Общая площадь квартиры:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(4, 78);
+            label13.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(175, 15);
+            label13.TabIndex = 2;
+            label13.Text = "Параметр площади квартиры:";
+            // 
+            // txtbxIsLivingParam
+            // 
+            txtbxIsLivingParam.Location = new System.Drawing.Point(265, 225);
+            txtbxIsLivingParam.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxIsLivingParam.Name = "txtbxIsLivingParam";
+            txtbxIsLivingParam.Size = new System.Drawing.Size(242, 23);
+            txtbxIsLivingParam.TabIndex = 3;
+            txtbxIsLivingParam.Text = "Помещение жилое";
+            // 
+            // txtbxAreaCoeff
+            // 
+            txtbxAreaCoeff.Location = new System.Drawing.Point(265, 195);
+            txtbxAreaCoeff.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxAreaCoeff.Name = "txtbxAreaCoeff";
+            txtbxAreaCoeff.Size = new System.Drawing.Size(242, 23);
+            txtbxAreaCoeff.TabIndex = 3;
+            txtbxAreaCoeff.Text = "АР_КоэффПлощади";
+            // 
+            // txtbxRoomCount
+            // 
+            txtbxRoomCount.Location = new System.Drawing.Point(265, 165);
+            txtbxRoomCount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxRoomCount.Name = "txtbxRoomCount";
+            txtbxRoomCount.Size = new System.Drawing.Size(242, 23);
+            txtbxRoomCount.TabIndex = 3;
+            txtbxRoomCount.Text = "АР_КолвоКомнат";
+            // 
+            // txtbxFlatLivingArea
+            // 
+            txtbxFlatLivingArea.Location = new System.Drawing.Point(265, 135);
+            txtbxFlatLivingArea.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFlatLivingArea.Name = "txtbxFlatLivingArea";
+            txtbxFlatLivingArea.Size = new System.Drawing.Size(242, 23);
+            txtbxFlatLivingArea.TabIndex = 3;
+            txtbxFlatLivingArea.Text = "АР_ПлощадьКвартирыЖилая";
+            // 
+            // txtbxFlatSumArea
+            // 
+            txtbxFlatSumArea.Location = new System.Drawing.Point(265, 105);
+            txtbxFlatSumArea.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFlatSumArea.Name = "txtbxFlatSumArea";
+            txtbxFlatSumArea.Size = new System.Drawing.Size(242, 23);
+            txtbxFlatSumArea.TabIndex = 3;
+            txtbxFlatSumArea.Text = "АР_ПлощадьКвартирыОбщая";
+            // 
+            // txtbxFlatArea
+            // 
+            txtbxFlatArea.Location = new System.Drawing.Point(265, 75);
+            txtbxFlatArea.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtbxFlatArea.Name = "txtbxFlatArea";
+            txtbxFlatArea.Size = new System.Drawing.Size(242, 23);
+            txtbxFlatArea.TabIndex = 3;
+            txtbxFlatArea.Text = "АР_ПлощадьКвартиры";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(chxbxRoomNumberToFinishing);
+            groupBox5.Controls.Add(label20);
+            groupBox5.Controls.Add(label19);
+            groupBox5.Controls.Add(txtbxFinishingRoomNumberParam);
+            groupBox5.Location = new System.Drawing.Point(14, 482);
+            groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox5.Size = new System.Drawing.Size(514, 120);
+            groupBox5.TabIndex = 5;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Принадлежность 3D-отделки к помещениям";
+            // 
+            // chxbxRoomNumberToFinishing
+            // 
+            chxbxRoomNumberToFinishing.AutoSize = true;
+            chxbxRoomNumberToFinishing.Checked = true;
+            chxbxRoomNumberToFinishing.CheckState = System.Windows.Forms.CheckState.Checked;
+            chxbxRoomNumberToFinishing.Location = new System.Drawing.Point(7, 22);
+            chxbxRoomNumberToFinishing.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            chxbxRoomNumberToFinishing.Name = "chxbxRoomNumberToFinishing";
+            chxbxRoomNumberToFinishing.Size = new System.Drawing.Size(102, 19);
+            chxbxRoomNumberToFinishing.TabIndex = 4;
+            chxbxRoomNumberToFinishing.Text = "Активировать";
+            chxbxRoomNumberToFinishing.UseVisualStyleBackColor = true;
+            chxbxRoomNumberToFinishing.CheckedChanged += chkbxInGroup_CheckedChanged;
+            // 
+            // label20
+            // 
+            label20.Location = new System.Drawing.Point(4, 75);
+            label20.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(497, 40);
+            label20.TabIndex = 2;
+            label20.Text = "В отделку, выполненную \"Стенами\", будет прописан номер помещения, которое они окружают.";
             // 
             // FormArchParametrisation
             // 
-            this.AcceptButton = this.buttonOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(465, 960);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.buttonCancel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FormArchParametrisation";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "АР Параметризация";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.ResumeLayout(false);
-
+            AcceptButton = buttonOk;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = buttonCancel;
+            ClientSize = new System.Drawing.Size(542, 1108);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(buttonOk);
+            Controls.Add(buttonCancel);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "FormArchParametrisation";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "АР Параметризация";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -734,5 +774,6 @@ namespace ArchParametrisation
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtbxIsLivingParam;
         private System.Windows.Forms.CheckBox checkBoxUseRoomNames;
+        private System.Windows.Forms.CheckBox chkBoxCalculateOneRoomOpenings;
     }
 }

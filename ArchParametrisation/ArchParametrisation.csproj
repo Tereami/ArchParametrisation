@@ -82,6 +82,11 @@
 		<DefineConstants>TRACE;DEBUG;R2025</DefineConstants>
 		<AssemblyName>$(AssemblyName)_2025</AssemblyName>
 	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="RbsLogger">
+			<HintPath>..\..\RbsLogger\RbsLogger\bin\Debug\RbsLogger.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 	<Choose>
 		<When Condition=" '$(Configuration)'=='R2017' ">
 			<ItemGroup>
