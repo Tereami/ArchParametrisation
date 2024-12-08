@@ -64,6 +64,9 @@ namespace ArchParametrisation
             this.txtbxFlatNumber = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.RommName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomCoeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomIsLiving = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.chkbxActivateFlatography = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,9 +84,7 @@ namespace ArchParametrisation
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chxbxRoomNumberToFinishing = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.RommName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomCoeff = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomIsLiving = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -104,6 +105,7 @@ namespace ArchParametrisation
             resources.ApplyResources(this.buttonOk, "buttonOk");
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // groupBox1
             // 
@@ -328,6 +330,27 @@ namespace ArchParametrisation
             this.RoomIsLiving});
             this.dataGridView1.Name = "dataGridView1";
             // 
+            // RommName
+            // 
+            this.RommName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.RommName, "RommName");
+            this.RommName.Name = "RommName";
+            this.RommName.ReadOnly = true;
+            // 
+            // RoomCoeff
+            // 
+            this.RoomCoeff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RoomCoeff.FillWeight = 50F;
+            resources.ApplyResources(this.RoomCoeff, "RoomCoeff");
+            this.RoomCoeff.Name = "RoomCoeff";
+            // 
+            // RoomIsLiving
+            // 
+            this.RoomIsLiving.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RoomIsLiving.FillWeight = 30F;
+            resources.ApplyResources(this.RoomIsLiving, "RoomIsLiving");
+            this.RoomIsLiving.Name = "RoomIsLiving";
+            // 
             // chkbxActivateFlatography
             // 
             resources.ApplyResources(this.chkbxActivateFlatography, "chkbxActivateFlatography");
@@ -424,26 +447,12 @@ namespace ArchParametrisation
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
             // 
-            // RommName
+            // buttonReset
             // 
-            this.RommName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.RommName, "RommName");
-            this.RommName.Name = "RommName";
-            this.RommName.ReadOnly = true;
-            // 
-            // RoomCoeff
-            // 
-            this.RoomCoeff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RoomCoeff.FillWeight = 50F;
-            resources.ApplyResources(this.RoomCoeff, "RoomCoeff");
-            this.RoomCoeff.Name = "RoomCoeff";
-            // 
-            // RoomIsLiving
-            // 
-            this.RoomIsLiving.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RoomIsLiving.FillWeight = 30F;
-            resources.ApplyResources(this.RoomIsLiving, "RoomIsLiving");
-            this.RoomIsLiving.Name = "RoomIsLiving";
+            resources.ApplyResources(this.buttonReset, "buttonReset");
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // FormArchParametrisation
             // 
@@ -451,6 +460,7 @@ namespace ArchParametrisation
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -531,5 +541,6 @@ namespace ArchParametrisation
         private System.Windows.Forms.DataGridViewTextBoxColumn RommName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomCoeff;
         private System.Windows.Forms.DataGridViewCheckBoxColumn RoomIsLiving;
+        private System.Windows.Forms.Button buttonReset;
     }
 }

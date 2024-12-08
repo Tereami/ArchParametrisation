@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 #endregion
 
@@ -74,7 +75,7 @@ namespace ArchParametrisation
                 Debug.WriteLine("Create directory " + rbspath);
                 Directory.CreateDirectory(rbspath);
             }
-            string solutionName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            string solutionName = "ArchParametrisation"; //System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             string solutionFolder = Path.Combine(rbspath, solutionName);
             if (!Directory.Exists(solutionFolder))
             {
@@ -111,7 +112,7 @@ namespace ArchParametrisation
         public void Save()
         {
             Debug.WriteLine("Start save settins to file " + xmlPath);
-            if (File.Exists(xmlPath)) File.Delete(xmlPath);
+            Reset();
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             using (FileStream writer = new FileStream(xmlPath, FileMode.OpenOrCreate))
             {
@@ -120,5 +121,19 @@ namespace ArchParametrisation
             Debug.WriteLine("Save settings success");
         }
 
+        public void Reset()
+        {
+            if (File.Exists(xmlPath))
+            {
+                try
+                {
+                    File.Delete(xmlPath);
+                }
+                catch
+                {
+                    MessageBox.Show("FAILED TO DELETE FILE " + xmlPath);
+                }
+            }
+        }
     }
 }

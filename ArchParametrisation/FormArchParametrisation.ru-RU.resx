@@ -133,9 +133,6 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Будут обработаны все экземпляры семейств со свойством Mirrored = true</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>в параметр:</value>
   </data>
@@ -348,5 +345,11 @@
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Принадлежность 3D-отделки к помещениям</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 23</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>Сброс настроек</value>
   </data>
 </root>
