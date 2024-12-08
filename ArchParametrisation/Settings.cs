@@ -13,9 +13,6 @@ Zuev Aleksandr, 2020, all rigths reserved.*/
 #region Usings
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
@@ -29,39 +26,39 @@ namespace ArchParametrisation
         private static string xmlPath = "";
 
         public bool enableMirrored = false;
-        public string mirroredText = "Л";
-        public string mirroredParamName = "Комментарии";
+        public string mirroredText = MyStrings.ValueMirroredText;
+        public string mirroredParamName = MyStrings.ValueCommentsParam;
 
         public bool enableOpeningsArea = false;
-        public string openingsWidthParamName = "Ширина";
-        public string openingsHeightParamName = "Высота";
-        public string openingsAreaParamName = "АР_ПлощПроемов";
+        public string openingsWidthParamName = MyStrings.ValueOpeningWidthParam;
+        public string openingsHeightParamName = MyStrings.ValueOpeningHeightParam;
+        public string openingsAreaParamName = MyStrings.ValueOpeningAreaParam;
         public bool openingsCalculateInOneRoom = false;
 
         public bool enableNumbersOfFinishings = false;
-        public string numbersOfFloorTypesParamName = "АР_НомераПомещенийПоТипуПола";
-        public string numbersOfFinishingParamName = "АР_НомераПомещенийВедОтделки";
+        public string numbersOfFloorTypesParamName = MyStrings.ValueRoomNumberByFloorType;
+        public string numbersOfFinishingParamName = MyStrings.ValueRoomNumberByFinishingType;
         public bool chkbxFloorsIncludeInFinishing = false;
         public bool useRoomName = false;
 
         public bool enableRoomNumberToFinishing = false;
-        public string roomNumberParamName = "АР_НомерПомещения";
+        public string roomNumberParamName = MyStrings.ValueRoomNumberParam;
 
         public bool enableFlatography = false;
-        public string flatNumberParamName = "АР_НомерКвартиры";
-        public string flatAreaParamName = "АР_ПлощКвартиры";
-        public string flatSumAreaParamName = "АР_ПлощКвОбщая";
-        public string flatLivingAreaParamName = "АР_ПлощКвЖилая";
-        public string flatRoomsCountParamName = "АР_КолвоКомнат";
-        public string flatRoomAreaCoeffParamName = "АР_КоэффПлощади";
-        public string isLivingParamName = "Помещение жилое";
+        public string flatNumberParamName = MyStrings.ValueFlatNumberParam;
+        public string flatAreaParamName = MyStrings.ValueFlatAreaParam;
+        public string flatSumAreaParamName = MyStrings.ValueFlatSumAreaParam;
+        public string flatLivingAreaParamName = MyStrings.ValueFlatLivingArea;
+        public string flatRoomsCountParamName = MyStrings.ValueFlatRoomsCount;
+        public string flatRoomAreaCoeffParamName = MyStrings.ValueFlatAreaCoeff;
+        public string isLivingParamName = MyStrings.ValueRoomIsLivingParam;
 
         public List<RoomInfo> defaultRoomInfos = new List<RoomInfo>
         {
-            new RoomInfo("Спальная", 1, true),
-            new RoomInfo("Кухня", 1, false),
-            new RoomInfo("Лоджия", 0.5, false),
-            new RoomInfo("Балкон", 0.3, false)
+            new RoomInfo(MyStrings.RoomBedroom, 1, true),
+            new RoomInfo(MyStrings.RoomKitchen, 1, false),
+            new RoomInfo(MyStrings.RoomLoggia, 0.5, false),
+            new RoomInfo(MyStrings.RoomBalcony, 0.3, false)
         };
 
         public List<RoomInfo> RoomInfos = new List<RoomInfo>();

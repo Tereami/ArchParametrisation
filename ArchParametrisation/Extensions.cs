@@ -11,16 +11,12 @@ This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 #region Usings
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
-using Autodesk.Revit.UI;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 #endregion
 
 namespace ArchParametrisation
@@ -74,16 +70,16 @@ namespace ArchParametrisation
                 Room room1 = fi.ToRoom;
                 Room room2 = fi.FromRoom;
 
-                if(room1 == null && room2 == null)
+                if (room1 == null && room2 == null)
                 {
                     Debug.WriteLine($"Opening id {fi.Id} is not in a room. Maybe model error");
                     continue;
                 }
-                else if(room1 != null && room2 == null)
+                else if (room1 != null && room2 == null)
                 {
                     curRooms.Add(room1);
                 }
-                else if(room1 == null && room2 != null)
+                else if (room1 == null && room2 != null)
                 {
                     curRooms.Add(room2);
                 }
@@ -92,7 +88,7 @@ namespace ArchParametrisation
                     if (room1.Id == room2.Id)
                     {
                         Debug.WriteLine($"Opening id {fi.Id} is entirely in the one room id {room1.Id}. Maybe model error");
-                        if(sets.openingsCalculateInOneRoom)
+                        if (sets.openingsCalculateInOneRoom)
                         {
                             curRooms.Add(room1);
                         }
@@ -104,7 +100,7 @@ namespace ArchParametrisation
                     }
                 }
 
-                
+
 
                 foreach (Room r in curRooms)
                 {
@@ -160,7 +156,7 @@ namespace ArchParametrisation
             }
             if (p.IsReadOnly)
             {
-                string msg = $"Параметр {paramName} недоступен для записи в элементе {elem.Id.GetElementIdValue()}";
+                string msg = $"{MyStrings.Parameter} {paramName} {MyStrings.ErrorParamDisabled} {elem.Id.GetElementIdValue()}";
                 Debug.WriteLine(msg);
                 if (ShowErrors)
                     throw new Exception(msg);
@@ -177,15 +173,14 @@ namespace ArchParametrisation
             else if (value is ElementId idValue)
                 p.Set(idValue);
             else
-                throw new Exception("Неизвестный тип параметра " + paramName);
+                throw new Exception($"{MyStrings.ErrorUnknownParamType} {paramName}");
         }
 
         public static T GetValue<T>(this Element elem, string paramName)
         {
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
-                throw new Exception("Нет параметра " + paramName
-                    + " в элементе " + elem.Id.GetElementIdValue());
+                throw new Exception($"{MyStrings.ErrorNoParameter} {paramName} {MyStrings.ErrorInElement} {elem.Id}");
             if (!p.HasValue)
                 return default(T);
 
@@ -200,7 +195,7 @@ namespace ArchParametrisation
                 case StorageType.ElementId:
                     return (T)(object)p.AsElementId();
             }
-            throw new Exception("Неизвестный тип параметра " + paramName);
+            throw new Exception($"{MyStrings.ErrorUnknownParamType} {paramName}");
         }
 
 

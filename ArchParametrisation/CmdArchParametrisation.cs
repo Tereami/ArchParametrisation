@@ -11,15 +11,12 @@ This code is provided 'as is'. Author disclaims any implied warranty.
 Zuev Aleksandr, 2020, all rigths reserved.*/
 #endregion
 #region Usings
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 #endregion
 
 namespace ArchParametrisation
@@ -93,7 +90,7 @@ namespace ArchParametrisation
                 Debug.WriteLine("MIRRORED");
                 using (Transaction t = new Transaction(doc))
                 {
-                    t.Start("Поиск отзеркаленных");
+                    t.Start(MyStrings.TransactionMirrored);
                     List<FamilyInstance> mirroredElems = doc.GetMirroredElements();
                     foreach (FamilyInstance e in mirroredElems)
                     {
@@ -104,7 +101,7 @@ namespace ArchParametrisation
                 }
 
                 Debug.WriteLine($"Mirrored found: {mirroredCount}");
-                messages.Add($"Найдено отзеркаленных элементов: {mirroredCount}");
+                messages.Add($"{MyStrings.ResultMirroredCount}: {mirroredCount}");
             }
 
             int openingsCount = 0;
@@ -113,7 +110,7 @@ namespace ArchParametrisation
                 Debug.WriteLine("OPENINGS AREA");
                 using (Transaction t = new Transaction(doc))
                 {
-                    t.Start("Площади проемов");
+                    t.Start(MyStrings.TransactionOpeningsArea);
                     Dictionary<int, List<FamilyInstance>> roomIdsAndOpenings = doc.GetOpenings(sets);
 
                     foreach (Room r in rooms)
@@ -138,7 +135,7 @@ namespace ArchParametrisation
                     t.Commit();
                 }
                 Debug.WriteLine($"Openings found: {openingsCount}");
-                messages.Add($"Найдено проёмов: {openingsCount}");
+                messages.Add($"{MyStrings.ResultOpeningsCount}: {openingsCount}");
             }
 
             int roomsCount = 0;
@@ -147,7 +144,7 @@ namespace ArchParametrisation
                 Debug.WriteLine("ROOMS FINISHING");
                 using (Transaction t = new Transaction(doc))
                 {
-                    t.Start("Ведомость отделки");
+                    t.Start(MyStrings.TransactionFinishing);
 
                     Dictionary<string, HashSet<string>> floorTypesAndRoomNumbers = new Dictionary<string, HashSet<string>>();
                     Dictionary<string, HashSet<string>> finishesTypesAndRoomNumbers = new Dictionary<string, HashSet<string>>();
@@ -198,7 +195,7 @@ namespace ArchParametrisation
                     t.Commit();
                 }
                 Debug.WriteLine($"Finishing numbers are written for {roomsCount} rooms");
-                messages.Add($"Номера по типам отделки прописаны для: {roomsCount} помещений");
+                messages.Add($"{MyStrings.ResultFinishing}: {roomsCount}");
             }
 
             int wallCount = 0;
@@ -207,7 +204,7 @@ namespace ArchParametrisation
                 Debug.WriteLine($"3D FINISHING");
                 using (Transaction t = new Transaction(doc))
                 {
-                    t.Start("Номера помещений в отделку");
+                    t.Start(MyStrings.Transaction3dFinishing);
 
                     foreach (Room r in rooms)
                     {
@@ -223,7 +220,7 @@ namespace ArchParametrisation
                     t.Commit();
                 }
                 Debug.WriteLine($"Finishing numbers are written for {wallCount} walls");
-                messages.Add($"Номера помещений прописаны для {wallCount} стен");
+                messages.Add($"{MyStrings.Result3dFinishing}: {wallCount}");
             }
 
             int flatsCount = 0;
@@ -277,7 +274,7 @@ namespace ArchParametrisation
 
                 using (Transaction t = new Transaction(doc))
                 {
-                    t.Start("Квартирография");
+                    t.Start(MyStrings.TransactionFlatography);
 
                     foreach (KeyValuePair<string, FlatInfo> kvp in flats)
                     {
@@ -305,7 +302,7 @@ namespace ArchParametrisation
                     t.Commit();
                 }
                 Debug.WriteLine($"Flats completed: {flatsCount}");
-                messages.Add($"Обработано квартир: {flatsCount}");
+                messages.Add($"{MyStrings.ResultFlatography}: {flatsCount}");
             }
 
             sets.Save();
@@ -313,7 +310,7 @@ namespace ArchParametrisation
             string msg = string.Join(System.Environment.NewLine, messages);
             Debug.WriteLine(msg);
 
-            BalloonTip.Show("АР параметризация выполнена!", msg);
+            BalloonTip.Show(MyStrings.Result, msg);
             return Result.Succeeded;
         }
 
