@@ -30,7 +30,9 @@ namespace ArchParametrisation
             Trace.Listeners.Add(new RbsLogger.Logger("ArchParametrisation"));
 
             Document doc = commandData.Application.ActiveUIDocument.Document;
-            Settings sets = Settings.Activate();
+
+            SettingsSaver.Saver<Settings> settingsSaver = new SettingsSaver.Saver<Settings>();
+            Settings sets = settingsSaver.Activate("ArchParametrisation");
             Debug.WriteLine($"Settings is loaded");
 
             List<Room> rooms = new FilteredElementCollector(doc)
@@ -77,7 +79,15 @@ namespace ArchParametrisation
             FormArchParametrisation form = new FormArchParametrisation(sets);
             if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
             {
-                Debug.WriteLine("Cancelled");
+                if (form.DialogResult == System.Windows.Forms.DialogResult.Retry)
+                {
+                    Debug.WriteLine("Reset settings");
+                    settingsSaver.Reset();
+                }
+                else
+                {
+                    Debug.WriteLine("Cancelled");
+                }
                 return Result.Cancelled;
             }
 
@@ -305,7 +315,7 @@ namespace ArchParametrisation
                 messages.Add($"{MyStrings.ResultFlatography}: {flatsCount}");
             }
 
-            sets.Save();
+            settingsSaver.Save();
 
             string msg = string.Join(System.Environment.NewLine, messages);
             Debug.WriteLine(msg);

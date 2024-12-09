@@ -174,8 +174,7 @@ namespace ArchParametrisation
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            curSettings.Reset();
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.Retry;
             this.Close();
         }
     }

@@ -147,7 +147,7 @@ namespace ArchParametrisation
             Parameter p = elem.LookupParameter(paramName);
             if (p == null)
             {
-                string msg = $"Нет параметра {paramName} в элементе {elem.Id.GetElementIdValue()}";
+                string msg = $"{MyStrings.ErrorNoParameter} {paramName} {MyStrings.ErrorInElement} {elem.Id.GetElementIdValue()}";
                 Debug.WriteLine(msg);
                 if (ShowErrors)
                     throw new Exception(msg);
