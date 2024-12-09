@@ -315,7 +315,7 @@ namespace ArchParametrisation
                 messages.Add($"{MyStrings.ResultFlatography}: {flatsCount}");
             }
 
-            settingsSaver.Save();
+            settingsSaver.Save(sets);
 
             string msg = string.Join(System.Environment.NewLine, messages);
             Debug.WriteLine(msg);
